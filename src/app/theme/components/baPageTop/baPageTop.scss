@@ -8,7 +8,7 @@
   height: 66px;
   width: 100%;
   min-width: $resMin;
-  padding: 0 32px 0 12px;
+  // padding: 0 32px 0 40px;
 
   .dropdown-toggle::after {
     display: none;
@@ -30,6 +30,8 @@ a.al-logo {
   float: left;
   outline: none !important;
   line-height: 60px;
+  width: 180px;
+  text-align: center;
 
   span {
     color: $primary;
@@ -103,7 +105,7 @@ a.collapse-menu-link {
   color: $sidebar-text;
   padding: 0;
   float: left;
-  margin: 11px 0 0 14px;
+  margin-top: 11px;
 
   &:hover {
     text-decoration: none;
