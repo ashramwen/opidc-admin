@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 
+import { LoginGuard } from './../theme/provider/login.guard';
 import { ModuleWithProviders } from '@angular/core';
 import { Pages } from './pages.component';
 
@@ -15,7 +16,11 @@ export const routes: Routes = [{
   component: Pages,
   children: [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-    { path: 'dashboard', loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule' },
+    {
+      path: 'dashboard',
+      loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule',
+      canActivate: [LoginGuard]
+    },
     { path: 'tables', loadChildren: 'app/pages/tables/tables.module#TablesModule' }
   ]
 }];

@@ -32,6 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModuleWithProviders, NgModule }      from '@angular/core';
 
 import { AppTranslationModule } from '../app.translation.module';
+import { AuthModule } from './auth.module';
 import { BaCardBlur } from './components/baCard/baCardBlur.directive';
 import {
   BaThemeConfig,
@@ -89,7 +90,8 @@ const NGA_VALIDATORS = [
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    AppTranslationModule
+    AppTranslationModule,
+    AuthModule
   ],
   exports: [
     ...NGA_PIPES,

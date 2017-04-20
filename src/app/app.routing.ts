@@ -1,4 +1,5 @@
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
 import { ModuleWithProviders } from '@angular/core';
 
 export const routes: Routes = [
@@ -6,4 +7,4 @@ export const routes: Routes = [
   { path: '**', redirectTo: 'pages/dashboard' }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });
+export const routing: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true, enableTracing: false });

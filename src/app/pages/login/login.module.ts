@@ -1,11 +1,11 @@
-import { NgModule }      from '@angular/core';
-import { CommonModule }  from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgaModule } from '../../theme/nga.module';
 
+import { AuthModule } from './../../theme/auth.module';
+import { CommonModule } from '@angular/common';
 import { Login } from './login.component';
-import { routing }       from './login.routing';
-
+import { NgModule } from '@angular/core';
+import { NgaModule } from '../../theme/nga.module';
+import { routing } from './login.routing';
 
 @NgModule({
   imports: [
@@ -13,10 +13,12 @@ import { routing }       from './login.routing';
     ReactiveFormsModule,
     FormsModule,
     NgaModule,
+    AuthModule,
     routing
   ],
   declarations: [
     Login
-  ]
+  ],
+  providers: []
 })
-export class LoginModule {}
+export class LoginModule { }
