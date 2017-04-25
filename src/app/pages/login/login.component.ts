@@ -27,10 +27,10 @@ export class Login {
     this.password = this.form.controls['password'];
   }
 
-  public onSubmit(credential: Credential) {
-    this.submitted = false;
-    if (this.form.valid) {
-      this.auth.login(credential);
-    }
-  }
+  // public onSubmit(credential: Credential) {
+  //   this.submitted = false;
+  //   if (this.form.valid) {
+  //     this.auth.login(credential);
+  //   }
+  // }
 }

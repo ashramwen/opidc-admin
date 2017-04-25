@@ -142,6 +142,7 @@ module.exports = function (options) {
         dllDir: helpers.root('dll'),
         webpackConfig: webpackMergeDll(commonConfig({env: ENV}), {
           devtool: 'cheap-module-source-map',
+          // devtool: 'eval-source-map',
           plugins: []
         })
       }),
