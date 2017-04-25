@@ -3,8 +3,8 @@ import 'rxjs/add/operator/catch';
 
 import { Headers, Http, Request, RequestOptions, RequestOptionsArgs, Response, XHRBackend } from '@angular/http';
 
-import { CsrfService } from './csrf.service';
 import { Injectable } from '@angular/core';
+import { MetaService } from './meta.service';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 
@@ -14,7 +14,7 @@ export class HttpService extends Http {
   constructor(
     backend: XHRBackend,
     options: RequestOptions,
-    private csrf: CsrfService,
+    private meta: MetaService,
     private router: Router
   ) {
     super(backend, options);
@@ -26,9 +26,9 @@ export class HttpService extends Http {
       if (!options) {
         options = { headers: new Headers() };
       }
-      options.headers.set(this.csrf.getHeader(), this.csrf.getValue());
+      options.headers.set(this.meta.getHeader(), this.meta.getValue());
     } else {
-      url.headers.set(this.csrf.getHeader(), this.csrf.getValue());
+      url.headers.set(this.meta.getHeader(), this.meta.getValue());
     }
     return super.request(url, options).catch(this.catchAuthError(this));
   }

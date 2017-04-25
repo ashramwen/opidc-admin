@@ -2,17 +2,17 @@ import { RequestOptions, XHRBackend } from '@angular/http';
 
 import { AuthService } from './provider/auth.service';
 import { ConfigHelper } from './provider/config-helper';
-import { CsrfService } from './provider/csrf.service';
 import { HttpService } from './provider/http.service';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { LoginGuard } from './provider/login.guard';
+import { MetaService } from './provider/meta.service';
 import { NgModule } from '@angular/core';
 import { RoleGuard } from './provider/role.guard';
 import { Router } from '@angular/router';
 import { localStorageConfig } from './constants/local-storage.config';
 
-export function httpClientFactory(backend: XHRBackend, options: RequestOptions, csrf: CsrfService, router: Router) {
-  return new HttpService(backend, options, csrf, router);
+export function httpClientFactory(backend: XHRBackend, options: RequestOptions, meta: MetaService, router: Router) {
+  return new HttpService(backend, options, meta, router);
 }
 
 @NgModule({
@@ -20,14 +20,14 @@ export function httpClientFactory(backend: XHRBackend, options: RequestOptions, 
     LocalStorageModule.withConfig(localStorageConfig)
   ],
   providers: [
-    CsrfService,
+    MetaService,
     AuthService,
     ConfigHelper,
     LoginGuard,
     RoleGuard,
     {
       provide: HttpService,
-      deps: [XHRBackend, RequestOptions, CsrfService, Router],
+      deps: [XHRBackend, RequestOptions, MetaService, Router],
       useFactory: httpClientFactory
     }
   ]

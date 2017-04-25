@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Role } from '../model/role.enum';
 
 @Injectable()
-export class CsrfService {
+export class MetaService {
 
   private metas: any;
   constructor() {
@@ -27,5 +28,9 @@ export class CsrfService {
   public getValue(): string {
     if (!this.metas['_csrf']) return;
     return this.metas['_csrf'].content;
+  }
+
+  public getRole(): Role {
+    return Role[this.metas['_role'].content as string];
   }
 }
