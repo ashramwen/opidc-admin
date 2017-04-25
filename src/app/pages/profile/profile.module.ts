@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NgaModule } from './../../theme/nga.module';
 import { ProfileComponent } from './profile.component';
-import { routing } from './../client/client.routing';
+import { routing } from './../profile/profile.routing';
 
 @NgModule({
   imports: [

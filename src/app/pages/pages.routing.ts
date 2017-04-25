@@ -36,11 +36,6 @@ export const routes: Routes = [{
       loadChildren: 'app/pages/token/token.module#TokenModule',
       canActivate: [LoginGuard]
     },
-    {
-      path: 'dashboard',
-      loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule',
-      canActivate: [LoginGuard]
-    },
     { path: 'tables', loadChildren: 'app/pages/tables/tables.module#TablesModule' }
   ]
 }];

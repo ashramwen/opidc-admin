@@ -51,18 +51,6 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'dashboard',
-        data: {
-          menu: {
-            title: 'general.menu.dashboard',
-            icon: 'fa fa-home',
-            selected: false,
-            expanded: false,
-            order: 400
-          }
-        }
-      },
-      {
         path: 'tables',
         data: {
           menu: {

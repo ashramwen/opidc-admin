@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NgaModule } from './../../theme/nga.module';
 import { SiteComponent } from './site.component';
-import { routing } from './../client/client.routing';
+import { routing } from './../site/site.routing';
 
 @NgModule({
   imports: [
