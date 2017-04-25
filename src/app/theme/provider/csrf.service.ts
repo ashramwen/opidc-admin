@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class CsrfService {
 
-  private metas: NodeListOf<HTMLMetaElement>;
+  private metas: any;
   constructor() {
     this.metas = document.getElementsByTagName('meta');
   }

@@ -24,11 +24,30 @@ const ngcWebpack = require('ngc-webpack');
  */
 const HMR = helpers.hasProcessFlag('hot');
 const AOT = helpers.hasNpmFlag('aot');
+
+var CSRF = {
+  'header': '${_csrf.token}',
+  'value': '${_csrf.headerName}'
+};
+var ROLE = '${role}';
+var BASE = '/opidc-server/';
+
+if(helpers.isWebpackDevServer()) {
+  CSRF = {
+    'header': 'X-CSRF-TOKEN',
+    'value': '49457426-3ea9-4c07-99c7-7d9c6c431a6d'
+  };
+  ROLE = 'admin';
+  BASE = '/';
+}
+
 const METADATA = {
   title: 'OPIDC',
   description: 'OpenID Connect Admin',
-  baseUrl: '/',
-  isDevServer: helpers.isWebpackDevServer()
+  baseUrl: BASE,
+  isDevServer: helpers.isWebpackDevServer(),
+  csrf: CSRF,
+  role: ROLE
 };
 
 /*
@@ -286,7 +305,8 @@ module.exports = function (options) {
         title: METADATA.title,
         chunksSortMode: 'dependency',
         metadata: METADATA,
-        inject: 'head'
+        inject: 'head',
+        xhtml: true
       }),
 
       /*

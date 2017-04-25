@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang=“en” xmlns=“http://www.w3.org/1999/xhtml” xmlns:th=“http://www.thymeleaf.org”>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
   <title><%= htmlWebpackPlugin.options.title %></title>
 
-  <meta name="description" content="<%= htmlWebpackPlugin.options.metadata.description %>">
+  <meta name="description" content="<%= htmlWebpackPlugin.options.metadata.description %>"/>
 
-  <meta name="_csrf" content="49457426-3ea9-4c07-99c7-7d9c6c431a6d" />
-  <meta name="_csrf_header" content="X-CSRF-TOKEN" />
+  <% if (htmlWebpackPlugin.options.metadata.isDevServer) { %>
+  <meta name="_csrf" content="<%= htmlWebpackPlugin.options.metadata.csrf.value %>"/>
+  <meta name="_csrf_header" content="<%= htmlWebpackPlugin.options.metadata.csrf.header %>"/>
+  <meta name="_role" content="<%= htmlWebpackPlugin.options.metadata.role %>"/>
+  <% } else { %>
+  <meta name="_csrf" th:content="<%= htmlWebpackPlugin.options.metadata.csrf.value %>"/>
+  <meta name="_csrf_header" th:content="<%= htmlWebpackPlugin.options.metadata.csrf.header %>"/>
+  <meta name="_role" th:content="<%= htmlWebpackPlugin.options.metadata.role %>"/>
+  <% } %>
 
   <% if (webpackConfig.htmlElements.headTags) { %>
   <!-- Configured Head Tags  -->
@@ -18,7 +25,7 @@
   <% } %>
 
   <!-- base url -->
-  <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
+  <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>" />
 
 
 </head>

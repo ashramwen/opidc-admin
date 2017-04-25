@@ -3,14 +3,62 @@ export const PAGES_MENU = [
     path: 'pages',
     children: [
       {
+        path: 'client',
+        data: {
+          menu: {
+            title: 'general.menu.client',
+            icon: 'fa fa-home',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
+        path: 'site',
+        data: {
+          menu: {
+            title: 'general.menu.site',
+            icon: 'fa fa-home',
+            selected: false,
+            expanded: false,
+            order: 100
+          }
+        }
+      },
+      {
+        path: 'token',
+        data: {
+          menu: {
+            title: 'general.menu.token',
+            icon: 'fa fa-home',
+            selected: false,
+            expanded: false,
+            order: 200
+          }
+        }
+      },
+      {
+        path: 'profile',
+        data: {
+          menu: {
+            title: 'general.menu.profile',
+            icon: 'fa fa-home',
+            selected: false,
+            expanded: false,
+            order: 300
+          }
+        }
+      },
+      {
         path: 'dashboard',
         data: {
           menu: {
             title: 'general.menu.dashboard',
-            icon: 'ion-android-home',
+            icon: 'fa fa-home',
             selected: false,
             expanded: false,
-            order: 0
+            order: 400
           }
         }
       },

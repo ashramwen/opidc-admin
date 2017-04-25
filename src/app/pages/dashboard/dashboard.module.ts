@@ -9,7 +9,6 @@ import { routing }       from './dashboard.routing';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     AppTranslationModule,
     NgaModule,
     routing

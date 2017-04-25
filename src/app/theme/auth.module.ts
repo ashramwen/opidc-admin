@@ -11,6 +11,10 @@ import { RoleGuard } from './provider/role.guard';
 import { Router } from '@angular/router';
 import { localStorageConfig } from './constants/local-storage.config';
 
+export function httpClientFactory(backend: XHRBackend, options: RequestOptions, csrf: CsrfService, router: Router) {
+  return new HttpService(backend, options, csrf, router);
+}
+
 @NgModule({
   imports: [
     LocalStorageModule.withConfig(localStorageConfig)
@@ -23,10 +27,8 @@ import { localStorageConfig } from './constants/local-storage.config';
     RoleGuard,
     {
       provide: HttpService,
-      useFactory: (backend: XHRBackend, options: RequestOptions, csrf: CsrfService, router: Router) => {
-        return new HttpService(backend, options, csrf, router);
-      },
-      deps: [XHRBackend, RequestOptions, CsrfService, Router]
+      deps: [XHRBackend, RequestOptions, CsrfService, Router],
+      useFactory: httpClientFactory
     }
   ]
 })
