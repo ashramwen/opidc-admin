@@ -20,8 +20,8 @@ const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
 const BASE_CONFIG = process.env.BASE_CONFIG = {
-  'siteUrl': 'http://114.215.178.24:8080/beehive-portal',
-  'kiiAppID': '493e83c9'
+  // 'siteUrl': 'http://localhost:9090/opidc-server'
+  'siteUrl': '/opidc-server'
 };
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,
@@ -62,7 +62,7 @@ module.exports = function (env) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-filename
        */
-      filename: '[name].[chunkhash].bundle.js',
+      filename: 'js/[name].bundle.js',
 
       /**
        * The filename of the SourceMaps for the JavaScript files.
@@ -70,7 +70,7 @@ module.exports = function (env) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
        */
-      sourceMapFilename: '[name].[chunkhash].bundle.map',
+      sourceMapFilename: 'js/[name].bundle.map',
 
       /**
        * The filename of non-entry chunks as relative path
@@ -78,7 +78,7 @@ module.exports = function (env) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
        */
-      chunkFilename: '[id].[chunkhash].chunk.js'
+      chunkFilename: 'js/[id].chunk.js'
 
     },
 
@@ -141,42 +141,42 @@ module.exports = function (env) {
        */
       // NOTE: To debug prod builds uncomment //debug lines and comment //prod lines
       new UglifyJsPlugin({
-        // beautify: true, //debug
-        // mangle: false, //debug
-        // dead_code: false, //debug
-        // unused: false, //debug
-        // deadCode: false, //debug
-        // compress: {
-        //   screw_ie8: true,
-        //   keep_fnames: true,
-        //   drop_debugger: false,
-        //   dead_code: false,
-        //   unused: false
-        // }, // debug
-        // comments: true, //debug
-
-
-        beautify: false, //prod
-        output: {
-          comments: false
-        },
-        mangle: {
-          screw_ie8: true
-        }, //prod
+        beautify: true, //debug
+        mangle: false, //debug
+        dead_code: false, //debug
+        unused: false, //debug
+        deadCode: false, //debug
         compress: {
           screw_ie8: true,
-          warnings: false,
-          conditionals: true,
-          unused: true,
-          comparisons: true,
-          sequences: true,
-          dead_code: true,
-          evaluate: true,
-          if_return: true,
-          join_vars: true,
-          negate_iife: false // we need this for lazy v8
-        },
-        comments: false //prod
+          keep_fnames: true,
+          drop_debugger: false,
+          dead_code: false,
+          unused: false
+        }, // debug
+        comments: true, //debug
+
+
+        // beautify: false, //prod
+        // output: {
+        //   comments: false
+        // },
+        // mangle: {
+        //   screw_ie8: true
+        // }, //prod
+        // compress: {
+        //   screw_ie8: true,
+        //   warnings: false,
+        //   conditionals: true,
+        //   unused: true,
+        //   comparisons: true,
+        //   sequences: true,
+        //   dead_code: true,
+        //   evaluate: true,
+        //   if_return: true,
+        //   join_vars: true,
+        //   negate_iife: false // we need this for lazy v8
+        // },
+        // comments: false //prod
       }),
 
       /**

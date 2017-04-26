@@ -38,10 +38,10 @@ export class AuthService {
   }
 
   public isLoggedIn(): boolean {
-    return !!(this.csrf.get());
+    return !!(this.meta.get());
   }
 
   public getRole(): Role {
-    return this.csrf.getRole();
+    return this.meta.getRole();
   }
 }

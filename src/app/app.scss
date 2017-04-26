@@ -1,20 +1,8 @@
 @import "~normalize.css";
 @import "theme/theme";
 
-@font-face {
-	font-family: 'roboto';
-	src: url('../assets/fonts/roboto/Roboto-Regular.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'roboto-thin';
-  src: url('../assets/fonts/roboto/Roboto-Thin.ttf') format('truetype');
-}
-
-// $fa-font-path: '../assets/fonts/font-awesome';
-// $fa-font-path: "../node_modules/font-awesome/fonts" !default;
-
 body, html{
   margin: 0px;
   font-family: 'roboto';
-  overflow: hidden;
+  // overflow: hidden;
 }

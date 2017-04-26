@@ -42,6 +42,7 @@ import {
 } from './theme.configProvider';
 import { CommonModule }  from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { TagComponent } from './components/tag/tag.component';
 
 const NGA_COMPONENTS = [
   BaBackTop,
@@ -52,7 +53,8 @@ const NGA_COMPONENTS = [
   BaMenu,
   BaMultiCheckbox,
   BaPageTop,
-  BaSidebar
+  BaSidebar,
+  TagComponent
 ];
 
 const NGA_DIRECTIVES = [

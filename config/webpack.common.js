@@ -26,8 +26,8 @@ const HMR = helpers.hasProcessFlag('hot');
 const AOT = helpers.hasNpmFlag('aot');
 
 var CSRF = {
-  'header': '${_csrf.token}',
-  'value': '${_csrf.headerName}'
+  'header': '${_csrf.headerName}',
+  'value': '${_csrf.token}'
 };
 var ROLE = '${role}';
 var BASE = '/opidc-server/';
@@ -35,7 +35,7 @@ var BASE = '/opidc-server/';
 if(helpers.isWebpackDevServer()) {
   CSRF = {
     'header': 'X-CSRF-TOKEN',
-    'value': '49457426-3ea9-4c07-99c7-7d9c6c431a6d'
+    'value': 'ae4f0832-40ba-4eaa-a542-c12cee9b54d7'
   };
   ROLE = 'ROLE_ADMIN';
   BASE = '/';
@@ -227,7 +227,7 @@ module.exports = function (options) {
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
-      new ExtractTextPlugin({filename: 'initial.css', allChunks: true}),
+      new ExtractTextPlugin({filename: 'css/initial.css', allChunks: true}),
 
       new AssetsPlugin({
         path: helpers.root('dist'),

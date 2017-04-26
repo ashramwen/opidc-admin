@@ -27,6 +27,18 @@ export const PAGES_MENU = [
         }
       },
       {
+        path: 'scope',
+        data: {
+          menu: {
+            title: 'general.menu.scope',
+            icon: 'fa fa-home',
+            selected: false,
+            expanded: false,
+            order: 300
+          }
+        }
+      },
+      {
         path: 'token',
         data: {
           menu: {
@@ -35,18 +47,6 @@ export const PAGES_MENU = [
             selected: false,
             expanded: false,
             order: 200
-          }
-        }
-      },
-      {
-        path: 'profile',
-        data: {
-          menu: {
-            title: 'general.menu.profile',
-            icon: 'fa fa-home',
-            selected: false,
-            expanded: false,
-            order: 300
           }
         }
       },

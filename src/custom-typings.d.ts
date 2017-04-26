@@ -122,5 +122,4 @@ interface NodeModule extends WebpackModule {}
 interface Global extends GlobalEnvironment  {}
 declare var BASE_CONFIG: {
     siteUrl: string;
-    kiiAppID: string;
 };

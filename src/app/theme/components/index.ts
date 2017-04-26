@@ -7,3 +7,4 @@ export * from './baCard';
 export * from './baBackTop';
 export * from './baCheckbox';
 export * from './baMultiCheckbox';
+export * from './tag';

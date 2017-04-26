@@ -23,8 +23,8 @@ export const routes: Routes = [{
       canActivate: [LoginGuard, RoleGuard]
     },
     {
-      path: 'profile',
-      loadChildren: 'app/pages/profile/profile.module#ProfileModule',
+      path: 'scope',
+      loadChildren: 'app/pages/scope/scope.module#ScopeModule',
       canActivate: [LoginGuard]
     },
     {

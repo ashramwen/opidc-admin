@@ -2,7 +2,9 @@ import { AppTranslationModule } from './../../app.translation.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NgaModule } from './../../theme/nga.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TokenComponent } from './token.component';
+import { TokenService } from './token.service';
 import { routing } from './../token/token.routing';
 
 @NgModule({
@@ -10,8 +12,10 @@ import { routing } from './../token/token.routing';
     CommonModule,
     AppTranslationModule,
     NgaModule,
+    NgbModule,
     routing
   ],
-  declarations: [TokenComponent]
+  declarations: [TokenComponent],
+  providers: [TokenService]
 })
 export class TokenModule { }

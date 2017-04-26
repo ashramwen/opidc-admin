@@ -19,8 +19,8 @@ const HOST = process.env.HOST || 'localhost';
 const PORT = Number(process.env.PORT) || 3000;
 const HMR = helpers.hasProcessFlag('hot');
 const BASE_CONFIG = process.env.BASE_CONFIG = {
-  'siteUrl': 'http://114.215.178.24:8080/beehive-portal',
-  'kiiAppID': '493e83c9'
+  'siteUrl': 'http://localhost:9090/opidc-server'
+  // 'siteUrl': 'http://10.0.0.7:9090/opidc-server'
 };
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,

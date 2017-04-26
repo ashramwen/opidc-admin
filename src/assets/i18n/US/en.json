@@ -4,7 +4,7 @@
     "home": "Home",
     "menu": {
       "client": "Manage Clients",
-      "profile": "Profile",
+      "scope": "System Scopes",
       "site": "Approved Sites",
       "tables": "Tables",
       "token": "Active Token"

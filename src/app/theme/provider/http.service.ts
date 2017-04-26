@@ -21,16 +21,12 @@ export class HttpService extends Http {
   }
 
   request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
-    let token = localStorage.getItem('auth_token');
-    if (url instanceof String) {
-      if (!options) {
-        options = { headers: new Headers() };
-      }
-      options.headers.set(this.meta.getHeader(), this.meta.getValue());
-    } else {
-      url.headers.set(this.meta.getHeader(), this.meta.getValue());
-    }
-    return super.request(url, options).catch(this.catchAuthError(this));
+    let requestOptions = url instanceof String ? options : url;
+
+    requestOptions.headers = Object.assign(requestOptions.headers, this.basicHeaders);
+    // requestOptions.withCredentials = true;
+
+    return super.request(url, requestOptions).catch(this.catchAuthError(this));
   }
 
   private catchAuthError(self: HttpService) {
@@ -41,5 +37,19 @@ export class HttpService extends Http {
       }
       return Observable.throw(res);
     };
+  }
+
+  private get basicHeaders() {
+    let username: string = 'admin@kii.com';
+    let password: string = 'Kiiadmin2016';
+
+    let headers = new Headers();
+
+    headers.append(this.meta.getHeader(), this.meta.getValue());
+    headers.append('Authorization', 'Basic ' + btoa(username + ':' + password));
+
+    // headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    headers.append('Content-Type', 'application/json');
+    return headers;
   }
 }
