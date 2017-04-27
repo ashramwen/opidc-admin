@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ClientService } from './client.service';
-import { Clients } from './client.interface';
+import { Clients } from './client.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client',
@@ -10,39 +11,12 @@ import { Clients } from './client.interface';
 })
 export class ClientComponent implements OnInit {
 
-  public settings = {
-    hideSubHeader: true,
-    sort: false,
-    columns: {
-      id: {
-        title: 'ID',
-        type: 'number',
-        sort: false,
-      },
-      firstName: {
-        title: 'Client',
-        type: 'string',
-        sort: false,
-      },
-      lastName: {
-        title: 'Information',
-        type: 'string',
-        sort: false,
-      },
-      username: {
-        title: 'Action',
-        sort: false
-      }
-    }
-  };
-
   public clients: Clients;
 
   constructor(
+    private router: Router,
     private clientService: ClientService
-  ) {
-
-  }
+  ) { }
 
   public ngOnInit() {
     this.getClients();
@@ -51,6 +25,18 @@ export class ClientComponent implements OnInit {
   public refresh() {
     this.clients = undefined;
     this.getClients();
+  }
+
+  public new() {
+    this.router.navigate(['new']);
+  }
+
+  public edit(id) {
+
+  }
+
+  public delete(id) {
+
   }
 
   private getClients() {

@@ -14,12 +14,9 @@ export class ScopeService {
   ) { }
 
   public get() {
-    let url = this.configHelper.buildUrl(RESOURCE.CLIENT);
+    let url = this.configHelper.buildUrl(RESOURCE.SCOPES);
     return this.http
       .get(url)
-      .map((res) => res.json())
-      .subscribe((res) => {
-        console.log(res);
-      });
+      .map((res) => res.json());
   }
 }

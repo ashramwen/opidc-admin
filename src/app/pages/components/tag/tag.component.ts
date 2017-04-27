@@ -8,11 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TagComponent implements OnInit {
 
   @Input()
-  public tags: string[];
+  public tags: string | string[];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    if (typeof this.tags === 'string') {
+      this.tags = [this.tags];
+    }
   }
 
 }

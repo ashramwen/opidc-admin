@@ -1,8 +1,14 @@
 <div class="row">
   <div class="col-md-12">
     <ba-card>
-      <button type="button" class="btn btn-primary" (click)="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button>
-      <button type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> New Client</button>
+      <ul class="btn-list clearfix">
+        <li>
+          <button type="button" class="btn btn-default" (click)="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> New Client</button>
+        </li>
+      </ul>
     </ba-card>
     <ba-card title="Tokens" baCardClass="with-scroll">
       <ngb-tabset>
@@ -21,7 +27,7 @@
               <tbody>
                 <tr *ngFor="let token of accessTokens">
                   <td class="nowrap">
-                    <div>{{token.id}}</div>
+                    <span class="label label-primary">{{token.id}}</span>
                   </td>
                   <td class="nowrap">
                     <div>{{token.clientName}}</div>
@@ -44,23 +50,22 @@
               <thead>
                 <tr class="black-muted-bg">
                   <th>ID</th>
-                  <th>Client</th>
-                  <th>Information</th>
+                  <th>Token Information</th>
                   <th>Expires</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let token of accessTokens">
+                <tr *ngFor="let token of refreshTokens">
                   <td class="nowrap">
-                    <div>{{token.id}}</div>
+                    <span class="label label-primary">{{token.id}}</span>
                   </td>
                   <td class="nowrap">
-                    <div>{{token.clientName}}</div>
-                  </td>
-                  <td class="nowrap">
-                    <div>{{token.clientUri}}</div>
+                    <div>{{token.value}}</div>
                     <app-tag [tags]="token.scope"></app-tag>
+                  </td>
+                  <td class="nowrap">
+                    <div>{{token.expiration}}</div>
                   </td>
                   <td>
                     <button type="button" class="btn btn-danger">Revoke</button>

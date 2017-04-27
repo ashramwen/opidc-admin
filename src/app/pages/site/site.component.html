@@ -1,3 +1,41 @@
-<p>
-  site works!
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <ba-card>
+      <ul class="btn-list clearfix">
+        <li>
+          <button type="button" class="btn btn-default" (click)="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> New Client</button>
+        </li>
+      </ul>
+    </ba-card>
+    <ba-card title="Clients" baCardClass="with-scroll">
+      <table class="table table-hover">
+        <thead>
+          <tr class="black-muted-bg">
+            <th>ID</th>
+            <th>Scope</th>
+            <th>Expires</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let site of sites">
+            <td>
+              <span class="label label-primary">{{site.id}}</span>
+            </td>
+            <td class="nowrap">
+              <!--<div>{{site.description}}</div>-->
+              <app-tag [tags]="site.allowedScopes"></app-tag>
+            </td>
+            <td>{{site.timeoutDate}}</td>
+            <td>
+              <button type="button" class="btn btn-danger">Revoke</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ba-card>
+  </div>
+</div>

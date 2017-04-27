@@ -24,12 +24,13 @@ import {
   BaSlimScroll,
   BaThemeRun,
 } from './directives';
+import { EditListComponent, TagComponent } from '../pages/components';
 import {
   EmailValidator,
   EqualPasswordsValidator,
 } from './validators';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModuleWithProviders, NgModule }      from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import { AppTranslationModule } from '../app.translation.module';
 import { AuthModule } from './auth.module';
@@ -40,9 +41,9 @@ import {
 import {
   BaThemeConfigProvider,
 } from './theme.configProvider';
-import { CommonModule }  from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
-import { TagComponent } from './components/tag/tag.component';
 
 const NGA_COMPONENTS = [
   BaBackTop,
@@ -54,6 +55,7 @@ const NGA_COMPONENTS = [
   BaMultiCheckbox,
   BaPageTop,
   BaSidebar,
+  EditListComponent,
   TagComponent
 ];
 
@@ -93,7 +95,8 @@ const NGA_VALIDATORS = [
     FormsModule,
     ReactiveFormsModule,
     AppTranslationModule,
-    AuthModule
+    AuthModule,
+    FlexLayoutModule
   ],
   exports: [
     ...NGA_PIPES,
@@ -103,7 +106,7 @@ const NGA_VALIDATORS = [
 })
 export class NgaModule {
   static forRoot(): ModuleWithProviders {
-    return <ModuleWithProviders> {
+    return <ModuleWithProviders>{
       ngModule: NgaModule,
       providers: [
         BaThemeConfigProvider,

@@ -15,18 +15,6 @@ export const PAGES_MENU = [
         }
       },
       {
-        path: 'site',
-        data: {
-          menu: {
-            title: 'general.menu.site',
-            icon: 'fa fa-home',
-            selected: false,
-            expanded: false,
-            order: 100
-          }
-        }
-      },
-      {
         path: 'scope',
         data: {
           menu: {
@@ -35,6 +23,18 @@ export const PAGES_MENU = [
             selected: false,
             expanded: false,
             order: 300
+          }
+        }
+      },
+      {
+        path: 'site',
+        data: {
+          menu: {
+            title: 'general.menu.site',
+            icon: 'fa fa-home',
+            selected: false,
+            expanded: false,
+            order: 100
           }
         }
       },

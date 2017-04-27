@@ -1,0 +1,289 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <ba-card>
+      <ul class="btn-list clearfix">
+        <li>
+          <button type="button" class="btn btn-default" (click)="save()"><i class="fa fa-check-circle-o" aria-hidden="true"></i> Save</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-primary" routerLink="/pages/client"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
+        </li>
+      </ul>
+    </ba-card>
+
+    <ba-card>
+      <ngb-tabset>
+
+        <ngb-tab title="Main">
+          <ng-template ngbTabContent>
+            <div class="form-horizontal">
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label">Registered at</label>
+                </div>
+                <div fxFlex="30%">
+                  <label class="form-control-label">(Unknown)</label>
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label" for="inputClientName">Client Name</label>
+                </div>
+                <div fxFlex="30%">
+                  <input type="text" class="form-control" id="inputClientName" placeholder="Human-readable application name" [(ngModel)]="client.clientName">
+                  <label>Human-readable application name</label>
+                </div>
+              </div>
+
+              <!--<div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label" for="inputClientID">Client ID</label>
+                </div>
+                <div fxFlex="30%">
+                  <input type="text" class="form-control" id="inputClientID" placeholder="Client ID will be automatically generated" [(ngModel)]="client.clientId">
+                  <label>Unique identifier. If you leave this blank it will be automatically generated.</label>
+                </div>
+              </div>-->
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label" for="inputURI">Redirect URI(s)</label>
+                </div>
+                <div fxFlex="30%">
+                  <edit-list id="inputURI" [(items)]="client.redirectUris"></edit-list>
+                  <label>URIs that the client can be redirected to after the authorization page</label>
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label" for="inputDesc">Description</label>
+                </div>
+                <div fxFlex="30%">
+                  <textarea class="form-control" id="inputDesc" placeholder="Type a description"></textarea>
+                  <label>Human-readable text description</label>
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label" for="inputLogo">Logo</label>
+                </div>
+                <div fxFlex="30%">
+                  <input type="text" class="form-control" id="inputLogo" placeholder="https://">
+                  <label>URL that points to a logo image, will be displayed on approval page</label>
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label" for="inputTerm">Terms of Service</label>
+                </div>
+                <div fxFlex="30%">
+                  <input type="text" class="form-control" id="inputTerm" placeholder="https://">
+                  <label>URL for the Terms of Service of this client, will be displayed to the user</label>
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label" for="inputPolicy">Policy Statement</label>
+                </div>
+                <div fxFlex="30%">
+                  <input type="text" class="form-control" id="inputPolicy" placeholder="https://">
+                  <label>URL for the Policy Statement of this client, will be displayed to the user</label>
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label" for="inputHomePage">Home Page</label>
+                </div>
+                <div fxFlex="30%">
+                  <input type="text" class="form-control" id="inputHomePage" placeholder="https://">
+                  <label>URL for the client's home page, will be displayed to the user</label>
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label" for="inputSoftwareID">Software ID</label>
+                </div>
+                <div fxFlex="30%">
+                  <input type="text" class="form-control" id="inputSoftwareID" placeholder="https://">
+                  <label>Identifier for the software in this client</label>
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label" for="inputSoftwareVer">Software Version</label>
+                </div>
+                <div fxFlex="30%">
+                  <input type="text" class="form-control" id="inputSoftwareVer" placeholder="https://">
+                  <label>Version of the software in this client</label>
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label" for="inputContacts">Contacts</label>
+                </div>
+                <div fxFlex="30%">
+                  <input type="text" class="form-control" id="inputContacts" placeholder="https://">
+                  <label>List of contacts for administrators of this client.</label>
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label" for="inputStatement">Software Statement</label>
+                </div>
+                <div fxFlex="30%">
+                  <textarea class="form-control" id="inputStatement" placeholder="Type a statement"></textarea>
+                  <label>A software statement is issued by a trusted third party and locks certain elements of a client's registration</label>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+
+        <ngb-tab title="Access">
+          <ng-template ngbTabContent>
+            <div class="form-horizontal">
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label" for="inputScope">Scope</label>
+                </div>
+                <div fxFlex="30%">
+                  <input type="text" class="form-control" id="inputScope" placeholder="New Scope">
+                  <label>OAuth scopes this client is allowed to request</label>
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label">Grant Types</label>
+                </div>
+                <div fxFlex="30%">
+
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label">Response Types</label>
+                </div>
+                <div fxFlex="30%">
+
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label">Introspection</label>
+                </div>
+                <div fxFlex="30%">
+
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label">Subject Type</label>
+                </div>
+                <div fxFlex="30%">
+
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label" for="inputIdentifierURI">Sector Identifier URI</label>
+                </div>
+                <div fxFlex="30%">
+                  <input type="text" class="form-control" id="inputIdentifierURI" placeholder="https://">
+                  <label>Sector Identifier for JavaScript</label>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+
+        <ngb-tab title="Credentials">
+          <ng-template ngbTabContent>
+            <div class="form-horizontal">
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label">Client Secret</label>
+                </div>
+                <div fxFlex="30%">
+
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label">Public Key Set</label>
+                </div>
+                <div fxFlex="30%">
+
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+
+        <ngb-tab title="Tokens">
+          <ng-template ngbTabContent>
+            <div class="form-horizontal">
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label">Access Token Timeout</label>
+                </div>
+                <div fxFlex="30%">
+
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label">ID Token Timeout</label>
+                </div>
+                <div fxFlex="30%">
+
+                </div>
+              </div>
+
+              <div fxLayout="row" class="form-group">
+                <div fxFlex="10%" class="text-right">
+                  <label class="form-control-label">Refresh Tokens</label>
+                </div>
+                <div fxFlex="30%">
+
+                </div>
+              </div>
+
+            </div>
+          </ng-template>
+        </ngb-tab>
+
+      </ngb-tabset>
+    </ba-card>
+
+    <ba-card>
+      <ul class="btn-list clearfix">
+        <li>
+          <button type="button" class="btn btn-default" (click)="save()"><i class="fa fa-check-circle-o" aria-hidden="true"></i> Save</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-primary" routerLink="../"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
+        </li>
+      </ul>
+    </ba-card>
+
+  </div>
+</div>

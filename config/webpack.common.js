@@ -35,9 +35,9 @@ var BASE = '/opidc-server/';
 if(helpers.isWebpackDevServer()) {
   CSRF = {
     'header': 'X-CSRF-TOKEN',
-    'value': 'ae4f0832-40ba-4eaa-a542-c12cee9b54d7'
+    'value': '4c39e5d9-bd35-477b-a437-bdc0e4604d8f'
   };
-  ROLE = 'ROLE_ADMIN';
+  ROLE = '[ROLE_ADMIN, ROLE_USER]';
   BASE = '/';
 }
 

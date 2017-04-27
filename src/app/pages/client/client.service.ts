@@ -19,4 +19,11 @@ export class ClientService {
       .get(url)
       .map((res) => res.json());
   }
+
+  public getById(id) {
+    let url = this.configHelper.buildUrl(RESOURCE.CLIENT, [id]);
+    return this.http
+      .get(url)
+      .map((res) => res.json());
+  }
 }
