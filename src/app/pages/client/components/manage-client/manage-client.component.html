@@ -62,7 +62,7 @@
                   <label class="form-control-label" for="inputDesc">Description</label>
                 </div>
                 <div fxFlex="30%">
-                  <textarea class="form-control" id="inputDesc" placeholder="Type a description"></textarea>
+                  <textarea class="form-control" id="inputDesc" placeholder="Type a description" [(ngModel)]="client.clientDescription"></textarea>
                   <label>Human-readable text description</label>
                 </div>
               </div>
@@ -72,7 +72,7 @@
                   <label class="form-control-label" for="inputLogo">Logo</label>
                 </div>
                 <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputLogo" placeholder="https://">
+                  <input type="text" class="form-control" id="inputLogo" placeholder="https://" [(ngModel)]="client.logoUri">
                   <label>URL that points to a logo image, will be displayed on approval page</label>
                 </div>
               </div>
@@ -82,7 +82,7 @@
                   <label class="form-control-label" for="inputTerm">Terms of Service</label>
                 </div>
                 <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputTerm" placeholder="https://">
+                  <input type="text" class="form-control" id="inputTerm" placeholder="https://" [(ngModel)]="client.tosUri">
                   <label>URL for the Terms of Service of this client, will be displayed to the user</label>
                 </div>
               </div>
@@ -92,7 +92,7 @@
                   <label class="form-control-label" for="inputPolicy">Policy Statement</label>
                 </div>
                 <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputPolicy" placeholder="https://">
+                  <input type="text" class="form-control" id="inputPolicy" placeholder="https://" [(ngModel)]="client.policyUri">
                   <label>URL for the Policy Statement of this client, will be displayed to the user</label>
                 </div>
               </div>
@@ -102,7 +102,7 @@
                   <label class="form-control-label" for="inputHomePage">Home Page</label>
                 </div>
                 <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputHomePage" placeholder="https://">
+                  <input type="text" class="form-control" id="inputHomePage" placeholder="https://" [(ngModel)]="client.clientUri">
                   <label>URL for the client's home page, will be displayed to the user</label>
                 </div>
               </div>
@@ -112,7 +112,7 @@
                   <label class="form-control-label" for="inputSoftwareID">Software ID</label>
                 </div>
                 <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputSoftwareID" placeholder="https://">
+                  <input type="text" class="form-control" id="inputSoftwareID" placeholder="https://" [(ngModel)]="client.tosUri">
                   <label>Identifier for the software in this client</label>
                 </div>
               </div>
@@ -122,7 +122,7 @@
                   <label class="form-control-label" for="inputSoftwareVer">Software Version</label>
                 </div>
                 <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputSoftwareVer" placeholder="https://">
+                  <input type="text" class="form-control" id="inputSoftwareVer" placeholder="https://" [(ngModel)]="client.tosUri">
                   <label>Version of the software in this client</label>
                 </div>
               </div>
@@ -132,7 +132,7 @@
                   <label class="form-control-label" for="inputContacts">Contacts</label>
                 </div>
                 <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputContacts" placeholder="https://">
+                  <edit-list id="inputContacts" [(items)]="client.contacts"></edit-list>
                   <label>List of contacts for administrators of this client.</label>
                 </div>
               </div>
@@ -142,7 +142,7 @@
                   <label class="form-control-label" for="inputStatement">Software Statement</label>
                 </div>
                 <div fxFlex="30%">
-                  <textarea class="form-control" id="inputStatement" placeholder="Type a statement"></textarea>
+                  <textarea class="form-control" id="inputStatement" placeholder="Type a statement" [(ngModel)]="client.tosUri"></textarea>
                   <label>A software statement is issued by a trusted third party and locks certain elements of a client's registration</label>
                 </div>
               </div>
