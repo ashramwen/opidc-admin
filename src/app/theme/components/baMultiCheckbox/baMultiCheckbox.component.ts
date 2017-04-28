@@ -1,5 +1,5 @@
-import {Component, Input, Self} from '@angular/core';
-import {ControlValueAccessor, NgModel} from '@angular/forms';
+import { Component, Input, Self } from '@angular/core';
+import { ControlValueAccessor, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'ba-multi-checkbox[ngModel]',
@@ -8,13 +8,13 @@ import {ControlValueAccessor, NgModel} from '@angular/forms';
   providers: [NgModel]
 })
 export class BaMultiCheckbox implements ControlValueAccessor {
-  @Input() baMultiCheckboxClass:string;
-  @Input() propertiesMapping:any;
+  @Input() baMultiCheckboxClass: string;
+  @Input() propertiesMapping: any;
 
   public model: NgModel;
   public state: boolean;
 
-  public constructor(@Self() state:NgModel) {
+  public constructor( @Self() state: NgModel) {
     this.model = state;
     state.valueAccessor = this;
   }
@@ -28,14 +28,14 @@ export class BaMultiCheckbox implements ControlValueAccessor {
     }
     return item[prop];
   }
-  public onChange(value: any): void {}
-  public onTouch(value: any): void {}
+  public onChange(value: any): void { }
+  public onTouch(value: any): void { }
   public writeValue(state: any): void {
     this.state = state;
   }
 
   public registerOnChange(fn: any): void {
-    this.onChange = function(state: boolean) {
+    this.onChange = function (state: boolean) {
       this.writeValue(state);
       this.model.viewToModelUpdate(state);
     };

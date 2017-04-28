@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { OpidcTokens } from './token.interface';
-import { TokenService } from './token.service';
+import { OpidcTokens } from '../models/token.interface';
+import { TokenService } from '../services/token.service';
 
 @Component({
   selector: 'app-token',

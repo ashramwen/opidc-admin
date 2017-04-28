@@ -37,9 +37,12 @@ export class Client {
   reuseRefreshToken?: boolean;
   scope?: string[];
   sectorIdentifierUri?: any;
+  softwareId?: string;
+  softwareStatement?: string;
+  softwareVersion?: string;
   subjectType?: any;
   tokenEndpointAuthMethod?: string;
-  tokenEndpointAuthSigningAlg?: string;
+  tokenEndpointAuthSigningAlg: string = 'HS256';
   tosUri?: any;
   userInfoEncryptedResponseAlg?: any;
   userInfoEncryptedResponseEnc?: any;

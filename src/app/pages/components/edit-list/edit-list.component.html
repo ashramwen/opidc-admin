@@ -1,5 +1,5 @@
 <div fxLayout="row">
-  <input fxFlex type="text" class="form-control" [id]="id" placeholder="https://" [(ngModel)]="uri">
+  <input fxFlex type="text" class="form-control" [id]="id" [placeholder]="placeholder" [(ngModel)]="text">
   <div fxFlex="40px" class="text-right">
     <button class="btn btn-info btn-icon" type="button" (click)="add()"><i class="fa fa-plus"></i></button>
   </div>
@@ -7,7 +7,7 @@
 
 <div class="edit-list">
   <div class="edit-list-item" fxLayout="row" *ngFor="let item of items; let i = index">
-    <div fxFlex class="list-item"><label>{{item}}</label></div>
+    <div fxFlex><label>{{item}}</label></div>
     <div fxFlex="40px" class="text-right">
       <button class="btn btn-info btn-icon" type="button" (click)="del(i)"><i class="fa fa-minus"></i></button>
     </div>

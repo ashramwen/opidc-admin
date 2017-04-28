@@ -1,9 +1,10 @@
 import { ActivatedRoute, Params } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Client } from './../../client.model';
-import { ClientService } from './../../client.service';
+import { Client } from './../../../models/client.model';
+import { ClientService } from './../../../services/client.service';
 import { Observable } from 'rxjs/Observable';
+import { ScopeService } from './../../../services/scope.service';
 
 @Component({
   selector: 'app-manage-client',
@@ -19,12 +20,14 @@ export class ManageClientComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private clientService: ClientService
+    private clientService: ClientService,
+    private scopeService: ScopeService
   ) {
     this.client = new Client();
   }
 
   ngOnInit() {
+    this.scopeService.get().subscribe();
     this.activatedRoute.params
       .flatMap((params: Params) => {
         this.clientId = params['id'];
@@ -40,6 +43,6 @@ export class ManageClientComponent implements OnInit {
   }
 
   public save() {
-    console.log(this.client.redirectUris);
+    console.log(this.client.scope);
   }
 }

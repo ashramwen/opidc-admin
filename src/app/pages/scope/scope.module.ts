@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NgaModule } from './../../theme/nga.module';
 import { ScopeComponent } from './scope.component';
-import { ScopeService } from './scope.service';
 import { routing } from './../scope/scope.routing';
 
 @NgModule({
@@ -14,6 +13,6 @@ import { routing } from './../scope/scope.routing';
     routing
   ],
   declarations: [ScopeComponent],
-  providers: [ScopeService]
+  providers: []
 })
 export class ScopeModule { }

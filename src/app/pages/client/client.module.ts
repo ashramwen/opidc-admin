@@ -1,6 +1,5 @@
 import { AppTranslationModule } from './../../app.translation.module';
 import { ClientComponent } from './client.component';
-import { ClientService } from './client.service';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
@@ -24,6 +23,6 @@ import { routing } from './../client/client.routing';
     ClientComponent,
     ManageClientComponent
   ],
-  providers: [ClientService]
+  providers: []
 })
 export class ClientModule { }

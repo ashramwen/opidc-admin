@@ -7,7 +7,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class EditListComponent implements OnInit {
 
-  public uri: string;
+  public text: string;
+  public placeholder: string = 'https://';
 
   @Input()
   public id: string;
@@ -35,9 +36,9 @@ export class EditListComponent implements OnInit {
   }
 
   public add() {
-    if (!this.uri) return;
-    this._items.push(this.uri);
-    this.uri = undefined;
+    if (!this.text) return;
+    this._items.push(this.text);
+    this.text = undefined;
     this.itemsChange.emit(this._items);
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ApprovedSites } from './site.interface';
-import { SiteService } from './site.service';
+import { ApprovedSites } from '../models/site.interface';
+import { SiteService } from '../services/site.service';
 
 @Component({
   selector: 'app-site',

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NgaModule } from './../../theme/nga.module';
 import { SiteComponent } from './site.component';
-import { SiteService } from './site.service';
 import { routing } from './../site/site.routing';
 
 @NgModule({
@@ -14,6 +13,6 @@ import { routing } from './../site/site.routing';
     routing
   ],
   declarations: [SiteComponent],
-  providers: [SiteService]
+  providers: []
 })
 export class SiteModule { }

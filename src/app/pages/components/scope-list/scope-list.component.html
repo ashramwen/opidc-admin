@@ -1,0 +1,19 @@
+<div fxLayout="row">
+  <input fxFlex type="text" class="form-control" [id]="id" [placeholder]="placeholder" [(ngModel)]="text">
+  <div fxFlex="40px" class="text-right">
+    <button class="btn btn-info btn-icon" type="button" (click)="add()"><i class="fa fa-plus"></i></button>
+  </div>
+</div>
+
+<div class="scope-list">
+  <div class="scope-list-item" fxLayout="row" *ngFor="let scope of scopes; let i = index" (click)="change(scope)">
+    <div fxFlex><label>{{scope.value}}</label></div>
+    <div fxFlex fxFlexAlign="center">
+      <label class="checkbox-inline custom-checkbox nowrap">
+        <input type="checkbox" [checked]="scope.checked" (change)="change(scope)"
+              [disabled]="scope.restricted" [value]="scope.value">
+        <span></span>
+      </label>
+    </div>
+  </div>
+</div>

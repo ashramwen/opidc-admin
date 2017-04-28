@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ScopeService } from './scope.service';
-import { Scopes } from './scope.interface';
+import { ScopeService } from '../services/scope.service';
+import { Scopes } from '../models/scope.interface';
 
 @Component({
   selector: 'app-scope',

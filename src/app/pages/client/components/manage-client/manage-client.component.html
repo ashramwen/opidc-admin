@@ -14,7 +14,7 @@
 
     <ba-card>
       <ngb-tabset>
-
+        <!-- Main -->
         <ngb-tab title="Main">
           <ng-template ngbTabContent>
             <div class="form-horizontal">
@@ -109,26 +109,6 @@
 
               <div fxLayout="row" class="form-group">
                 <div fxFlex="10%" class="text-right">
-                  <label class="form-control-label" for="inputSoftwareID">Software ID</label>
-                </div>
-                <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputSoftwareID" placeholder="https://" [(ngModel)]="client.tosUri">
-                  <label>Identifier for the software in this client</label>
-                </div>
-              </div>
-
-              <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
-                  <label class="form-control-label" for="inputSoftwareVer">Software Version</label>
-                </div>
-                <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputSoftwareVer" placeholder="https://" [(ngModel)]="client.tosUri">
-                  <label>Version of the software in this client</label>
-                </div>
-              </div>
-
-              <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
                   <label class="form-control-label" for="inputContacts">Contacts</label>
                 </div>
                 <div fxFlex="30%">
@@ -137,27 +117,21 @@
                 </div>
               </div>
 
-              <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
-                  <label class="form-control-label" for="inputStatement">Software Statement</label>
-                </div>
-                <div fxFlex="30%">
-                  <textarea class="form-control" id="inputStatement" placeholder="Type a statement" [(ngModel)]="client.tosUri"></textarea>
-                  <label>A software statement is issued by a trusted third party and locks certain elements of a client's registration</label>
-                </div>
-              </div>
             </div>
           </ng-template>
         </ngb-tab>
-
+        <!-- END Main -->
+        <!-- Access -->
         <ngb-tab title="Access">
           <ng-template ngbTabContent>
+
             <div class="form-horizontal">
               <div fxLayout="row" class="form-group">
                 <div fxFlex="10%" class="text-right">
                   <label class="form-control-label" for="inputScope">Scope</label>
                 </div>
                 <div fxFlex="30%">
+                  <scope-list id="inputScope" [(items)]="client.scope" placeholder="New scope"></scope-list>
                   <input type="text" class="form-control" id="inputScope" placeholder="New Scope">
                   <label>OAuth scopes this client is allowed to request</label>
                 </div>

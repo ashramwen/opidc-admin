@@ -8,6 +8,7 @@ export interface Scope {
   structured: boolean;
   structuredParamDescription?: any;
   structuredValue?: any;
+  checked?: boolean;
 }
 
 export declare type Scopes = Scope[];
