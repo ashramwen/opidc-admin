@@ -1,0 +1,11 @@
+<div *ngFor="let item of items" [class]="class">
+  <label class="radio-inline custom-radio nowrap">
+    <input type="radio"
+           [name]="name"
+           [value]="item.value"
+           [checked]="item.checked"
+           [disabled]="item.disabled"
+           (change)="change(item.value)">
+    <span>{{item.text}}</span>
+  </label>
+</div>

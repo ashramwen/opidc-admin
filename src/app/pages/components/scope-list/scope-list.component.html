@@ -9,9 +9,12 @@
   <div class="scope-list-item" fxLayout="row" *ngFor="let scope of scopes; let i = index" (click)="change(scope)">
     <div fxFlex><label>{{scope.value}}</label></div>
     <div fxFlex fxFlexAlign="center">
-      <label class="checkbox-inline custom-checkbox nowrap">
-        <input type="checkbox" [checked]="scope.checked" (change)="change(scope)"
-              [disabled]="scope.restricted" [value]="scope.value">
+      <label class="custom-checkbox nowrap">
+        <input type="checkbox"
+               [value]="scope.value"
+               [checked]="scope.checked"
+               [disabled]="scope.restricted"
+               (change)="change(scope)">
         <span></span>
       </label>
     </div>

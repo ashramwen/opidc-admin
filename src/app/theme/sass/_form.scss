@@ -328,7 +328,7 @@ label.custom-input-danger {
   }
   label.custom-checkbox {
     color: $color;
-    &>span {
+    & > span {
       &:before {
         color: $color;
       }

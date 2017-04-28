@@ -16,6 +16,47 @@ export class ManageClientComponent implements OnInit {
   @Input()
   public client: Client;
 
+  public responseTypes = [{
+    text: 'CODE',
+    value: 'code'
+  }, {
+    text: 'TOKEN',
+    value: 'token'
+  }, {
+    text: 'ID_TOKEN',
+    value: 'id_token'
+  }];
+
+  public grantTypes = [{
+    text: 'authorization code',
+    value: 'authorization_code'
+  }, {
+    text: 'client credentials',
+    value: 'client_credentials'
+  }, {
+    text: 'password',
+    value: 'password'
+  }, {
+    text: 'implicit',
+    value: 'implicit'
+  }, {
+    text: 'refresh token',
+    value: 'refresh_token'
+  }];
+
+  public subjectTypes = [{
+    text: 'Public',
+    value: 'PUBLIC',
+    checked: true
+  }, {
+    text: 'Pairwise',
+    value: 'PAIRWISE'
+  }];
+
+  public cbClientSecret: boolean = false;
+  public cbDisplayClientSecret: boolean = false;
+  public typeClientSecret: string = 'password';
+
   private clientId: string;
 
   constructor(
@@ -26,14 +67,16 @@ export class ManageClientComponent implements OnInit {
     this.client = new Client();
   }
 
-  ngOnInit() {
-    this.scopeService.get().subscribe();
+  public ngOnInit() {
     this.activatedRoute.params
       .flatMap((params: Params) => {
         this.clientId = params['id'];
         if (this.clientId) {
+          // edit
           return this.clientService.getById(this.clientId);
         } else {
+          // new
+          this.cbClientSecret = true;
           return Observable.of(new Client());
         }
       })
@@ -42,7 +85,16 @@ export class ManageClientComponent implements OnInit {
       });
   }
 
+  public clientSecretChange(value) {
+    this.cbClientSecret = value[1];
+  }
+
+  public displayClientSecretChange(value) {
+    this.cbDisplayClientSecret = value[1];
+    this.typeClientSecret = this.cbDisplayClientSecret ? 'text' : 'password';
+  }
+
   public save() {
-    console.log(this.client.scope);
+    console.log(this.client.responseTypes);
   }
 }

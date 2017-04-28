@@ -1,0 +1,6 @@
+<div *ngFor="let item of items" [class]="class">
+  <app-checkbox [checked]="checkValue(item.value)"
+                [value]="item.value"
+                [text]="item.text"
+                (onChange)="change($event)"></app-checkbox>
+</div>

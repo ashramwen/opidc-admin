@@ -15,7 +15,7 @@ export class Client {
   defaultACRvalues?: any[];
   defaultMaxAge?: any;
   dynamicallyRegistered?: boolean;
-  grantTypes?: string[];
+  grantTypes: string[] = [];
   id?: number;
   idTokenEncryptedResponseAlg?: any;
   idTokenEncryptedResponseEnc?: any;
@@ -23,7 +23,7 @@ export class Client {
   idTokenValiditySeconds?: number;
   initiateLoginUri?: any;
   jwks?: any;
-  jwksUri?: any;
+  jwksUri?: string;
   logoUri?: any;
   policyUri?: any;
   postLogoutRedirectUris?: any[];
@@ -33,14 +33,14 @@ export class Client {
   requestUris?: any[];
   requireAuthTime?: any;
   resourceIds?: any[];
-  responseTypes?: string[];
+  responseTypes: string[] = [];
   reuseRefreshToken?: boolean;
   scope?: string[];
-  sectorIdentifierUri?: any;
+  sectorIdentifierUri?: string;
   softwareId?: string;
   softwareStatement?: string;
   softwareVersion?: string;
-  subjectType?: any;
+  subjectType: string = 'PUBLIC';
   tokenEndpointAuthMethod?: string;
   tokenEndpointAuthSigningAlg: string = 'HS256';
   tosUri?: any;

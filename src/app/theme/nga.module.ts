@@ -24,7 +24,14 @@ import {
   BaSlimScroll,
   BaThemeRun,
 } from './directives';
-import { EditListComponent, ScopeListComponent, TagComponent } from '../pages/components';
+import {
+  CheckboxComponent,
+  CheckboxListComponent,
+  EditListComponent,
+  RadioListComponent,
+  ScopeListComponent,
+  TagComponent,
+} from '../pages/components';
 import {
   EmailValidator,
   EqualPasswordsValidator,
@@ -55,8 +62,11 @@ const NGA_COMPONENTS = [
   BaMultiCheckbox,
   BaPageTop,
   BaSidebar,
-  ScopeListComponent,
+  CheckboxComponent,
+  CheckboxListComponent,
   EditListComponent,
+  RadioListComponent,
+  ScopeListComponent,
   TagComponent
 ];
 

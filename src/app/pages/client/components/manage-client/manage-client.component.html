@@ -13,7 +13,7 @@
     </ba-card>
 
     <ba-card>
-      <ngb-tabset>
+      <ngb-tabset [destroyOnHide]="false">
         <!-- Main -->
         <ngb-tab title="Main">
           <ng-template ngbTabContent>
@@ -124,15 +124,14 @@
         <!-- Access -->
         <ngb-tab title="Access">
           <ng-template ngbTabContent>
-
             <div class="form-horizontal">
+
               <div fxLayout="row" class="form-group">
                 <div fxFlex="10%" class="text-right">
                   <label class="form-control-label" for="inputScope">Scope</label>
                 </div>
                 <div fxFlex="30%">
                   <scope-list id="inputScope" [(items)]="client.scope" placeholder="New scope"></scope-list>
-                  <input type="text" class="form-control" id="inputScope" placeholder="New Scope">
                   <label>OAuth scopes this client is allowed to request</label>
                 </div>
               </div>
@@ -142,7 +141,7 @@
                   <label class="form-control-label">Grant Types</label>
                 </div>
                 <div fxFlex="30%">
-
+                  <app-checkbox-list [items]="grantTypes" [(model)]="client.grantTypes"></app-checkbox-list>
                 </div>
               </div>
 
@@ -151,16 +150,7 @@
                   <label class="form-control-label">Response Types</label>
                 </div>
                 <div fxFlex="30%">
-
-                </div>
-              </div>
-
-              <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
-                  <label class="form-control-label">Introspection</label>
-                </div>
-                <div fxFlex="30%">
-
+                  <app-checkbox-list [items]="responseTypes" [(model)]="client.responseTypes"></app-checkbox-list>
                 </div>
               </div>
 
@@ -169,7 +159,7 @@
                   <label class="form-control-label">Subject Type</label>
                 </div>
                 <div fxFlex="30%">
-
+                  <app-radio-list class="pull-left" name="inputSubjectType" [items]="subjectTypes" [(model)]="client.subjectType" (onChange)="client.subjectType=$event"></app-radio-list>
                 </div>
               </div>
 
@@ -178,14 +168,15 @@
                   <label class="form-control-label" for="inputIdentifierURI">Sector Identifier URI</label>
                 </div>
                 <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputIdentifierURI" placeholder="https://">
+                  <input type="text" class="form-control" id="inputIdentifierURI" placeholder="https://" [(ngModel)]="client.sectorIdentifierUri">
                   <label>Sector Identifier for JavaScript</label>
                 </div>
               </div>
             </div>
           </ng-template>
         </ngb-tab>
-
+        <!-- END Access -->
+        <!-- Credentials -->
         <ngb-tab title="Credentials">
           <ng-template ngbTabContent>
             <div class="form-horizontal">
@@ -195,22 +186,33 @@
                   <label class="form-control-label">Client Secret</label>
                 </div>
                 <div fxFlex="30%">
-
+                  <div>
+                    <app-checkbox [checked]="cbClientSecret" value="cbClientSecret" text="Generate a new client secret?" (onChange)="clientSecretChange($event)"></app-checkbox>
+                    <label>New secret will be generated when you click 'Save'</label>
+                  </div>
+                  <div *ngIf="!cbClientSecret">
+                    <span>Display/edit client secret:</span>
+                    <app-checkbox [checked]="cbDisplayClientSecret" value="cbDisplayClientSecret" (onChange)="displayClientSecretChange($event)"></app-checkbox>
+                    <input [type]="typeClientSecret" class="form-control" id="inputClientSecret" placeholder="Generate on Save" [(ngModel)]="client.clientSecret">
+                  </div>
                 </div>
               </div>
 
               <div fxLayout="row" class="form-group">
                 <div fxFlex="10%" class="text-right">
-                  <label class="form-control-label">Public Key Set</label>
+                  <label class="form-control-label" for="inputJwksUri">Public Key Set</label>
                 </div>
                 <div fxFlex="30%">
-
+                  <input type="text" class="form-control" id="inputJwksUri" placeholder="https://" [(ngModel)]="client.jwksUri">
+                  <label>URL for the client's JSON Web Key set (must be reachable by the server)</label>
                 </div>
               </div>
+
             </div>
           </ng-template>
         </ngb-tab>
-
+        <!-- END Credentials -->
+        <!-- Tokens -->
         <ngb-tab title="Tokens">
           <ng-template ngbTabContent>
             <div class="form-horizontal">
@@ -244,7 +246,7 @@
             </div>
           </ng-template>
         </ngb-tab>
-
+        <!-- END Tokens -->
       </ngb-tabset>
     </ba-card>
 
