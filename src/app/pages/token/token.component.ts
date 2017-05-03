@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OpidcToken, OpidcTokens } from '../models/token.interface';
 
-import { OpidcTokens } from '../models/token.interface';
 import { TokenService } from '../services/token.service';
 
 @Component({
@@ -10,8 +10,8 @@ import { TokenService } from '../services/token.service';
 })
 export class TokenComponent implements OnInit {
 
-  public accessTokens: any[];
-  public refreshTokens: any[];
+  public accessTokens: OpidcTokens;
+  public refreshTokens: OpidcTokens;
 
   public activeTab: string = 'access';
 
@@ -26,7 +26,6 @@ export class TokenComponent implements OnInit {
   public refresh() {
     this.accessTokens = undefined;
     this.refreshTokens = undefined;
-
     this.getToken();
   }
 
@@ -37,5 +36,4 @@ export class TokenComponent implements OnInit {
     this.tokenService.getRefreshToken()
       .subscribe((res: OpidcTokens) => this.refreshTokens = res);
   }
-
 }

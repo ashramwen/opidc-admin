@@ -5,74 +5,18 @@
         <li>
           <button type="button" class="btn btn-default" (click)="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button>
         </li>
-        <li>
-          <button type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> New Client</button>
-        </li>
       </ul>
     </ba-card>
     <ba-card title="Tokens" baCardClass="with-scroll">
-      <ngb-tabset>
+      <ngb-tabset [destroyOnHide]="false">
         <ngb-tab title="Access Tokens">
           <ng-template ngbTabContent>
-            <table class="table table-hover">
-              <thead>
-                <tr class="black-muted-bg">
-                  <th>ID</th>
-                  <th>Client</th>
-                  <th>Information</th>
-                  <th>Expires</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let token of accessTokens">
-                  <td class="nowrap">
-                    <span class="label label-primary">{{token.id}}</span>
-                  </td>
-                  <td class="nowrap">
-                    <div>{{token.clientName}}</div>
-                  </td>
-                  <td class="nowrap">
-                    <div>{{token.clientUri}}</div>
-                    <app-tag [tags]="token.scope"></app-tag>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-danger">Revoke</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <token-list [tokens]="accessTokens"></token-list>
           </ng-template>
         </ngb-tab>
         <ngb-tab title="Refresh Tokens">
           <ng-template ngbTabContent>
-            <table class="table table-hover">
-              <thead>
-                <tr class="black-muted-bg">
-                  <th>ID</th>
-                  <th>Token Information</th>
-                  <th>Expires</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let token of refreshTokens">
-                  <td class="nowrap">
-                    <span class="label label-primary">{{token.id}}</span>
-                  </td>
-                  <td class="nowrap">
-                    <div>{{token.value}}</div>
-                    <app-tag [tags]="token.scope"></app-tag>
-                  </td>
-                  <td class="nowrap">
-                    <div>{{token.expiration}}</div>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-danger">Revoke</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <token-list [tokens]="refreshTokens"></token-list>
           </ng-template>
         </ngb-tab>
       </ngb-tabset>

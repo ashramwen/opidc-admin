@@ -50,6 +50,7 @@ import {
   BaThemeConfigProvider,
 } from './theme.configProvider';
 import { CommonModule } from '@angular/common';
+import { ExpiresPipe } from './../pages/pipes/expires.pipe';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 
@@ -81,7 +82,8 @@ const NGA_DIRECTIVES = [
 
 const NGA_PIPES = [
   BaAppPicturePipe,
-  BaProfilePicturePipe
+  BaProfilePicturePipe,
+  ExpiresPipe
 ];
 
 const NGA_SERVICES = [

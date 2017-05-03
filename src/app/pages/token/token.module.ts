@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { NgaModule } from './../../theme/nga.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TokenComponent } from './token.component';
+import { TokenListComponent } from './components/token-list/token-list.component';
 import { routing } from './../token/token.routing';
 
 @NgModule({
@@ -14,7 +15,7 @@ import { routing } from './../token/token.routing';
     NgbModule,
     routing
   ],
-  declarations: [TokenComponent],
+  declarations: [TokenComponent, TokenListComponent],
   providers: []
 })
 export class TokenModule { }

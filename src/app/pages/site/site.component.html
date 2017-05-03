@@ -5,9 +5,6 @@
         <li>
           <button type="button" class="btn btn-default" (click)="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button>
         </li>
-        <li>
-          <button type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> New Client</button>
-        </li>
       </ul>
     </ba-card>
     <ba-card title="Clients" baCardClass="with-scroll">
@@ -15,27 +12,36 @@
         <thead>
           <tr class="black-muted-bg">
             <th>ID</th>
-            <th>Scope</th>
+            <th>Application</th>
             <th>Expires</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let site of sites">
+          <tr *ngFor="let site of pagedSites; trackBy: trackById">
             <td>
               <span class="label label-primary">{{site.id}}</span>
             </td>
             <td class="nowrap">
-              <!--<div>{{site.description}}</div>-->
+              <div>{{site.clientId}}</div>
               <app-tag [tags]="site.allowedScopes"></app-tag>
             </td>
-            <td>{{site.timeoutDate}}</td>
+            <td>
+              <div>Authorized: {{site.creationDate | date}}</div>
+              <div>Last accessed: {{site.accessDate | date}}</div>
+              <div>Expires: {{site.timeoutDate | date | expires}}</div>
+            </td>
             <td>
               <button type="button" class="btn btn-danger">Revoke</button>
             </td>
           </tr>
         </tbody>
       </table>
+      <div class="row" *ngIf="totalSize > 10">
+        <div class="col-md-12 col-centered">
+          <ngb-pagination [collectionSize]="totalSize" [(page)]="page" [boundaryLinks]="true" (pageChange)="pageChange()"></ngb-pagination>
+        </div>
+      </div>
     </ba-card>
   </div>
 </div>

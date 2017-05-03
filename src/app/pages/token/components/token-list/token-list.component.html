@@ -1,0 +1,32 @@
+<table class="table table-hover">
+  <thead>
+    <tr class="black-muted-bg">
+      <th>ID</th>
+      <th>Token Information</th>
+      <th>Expires</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let token of pagedTokens; trackBy: trackById">
+      <td class="nowrap">
+        <span class="label label-primary">{{token.id}}</span>
+      </td>
+      <td class="nowrap">
+        <input type="text" class="form-control" value="{{token.value}}" readonly>
+        <app-tag [tags]="token.scopes"></app-tag>
+      </td>
+      <td class="nowrap">
+        <div>{{token.expiration | date | expires}}</div>
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Revoke</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="row" *ngIf="totalSize > 10">
+  <div class="col-md-12 col-centered">
+    <ngb-pagination [collectionSize]="totalSize" [(page)]="page" [boundaryLinks]="true" (pageChange)="pageChange()"></ngb-pagination>
+  </div>
+</div>

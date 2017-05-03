@@ -6,7 +6,7 @@
           <button type="button" class="btn btn-default" (click)="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button>
         </li>
         <li>
-          <button type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> New Client</button>
+          <button type="button" class="btn btn-primary" routerLink="./new"><i class="fa fa-plus" aria-hidden="true"></i> New Client</button>
         </li>
       </ul>
     </ba-card>
@@ -29,10 +29,14 @@
               <div>{{scope.description}}</div>
             </td>
             <td>
-              <div class="btn-group" role="group" aria-label="Actions">
-                <button type="button" class="btn btn-info">Edit</button>
-                <button type="button" class="btn btn-danger">Delete</button>
-              </div>
+              <ul class="btn-list clearfix">
+                <li>
+                  <button type="button" class="btn btn-info" routerLink="./edit/{{scope.id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+                </li>
+                <li>
+                  <button type="button" class="btn btn-danger" (click)="delete(scope.id)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                </li>
+              </ul>
             </td>
           </tr>
         </tbody>
