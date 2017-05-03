@@ -6,6 +6,8 @@ import { ClientService } from './../../../services/client.service';
 import { Observable } from 'rxjs/Observable';
 import { ScopeService } from './../../../services/scope.service';
 
+const REFRESH_TOKEN = 'refresh_token';
+
 @Component({
   selector: 'app-manage-client',
   templateUrl: './manage-client.component.html',
@@ -39,10 +41,10 @@ export class ManageClientComponent implements OnInit {
   }, {
     text: 'implicit',
     value: 'implicit'
-  }, {
+  }/*, {
     text: 'refresh token',
     value: 'refresh_token'
-  }];
+  }*/];
 
   public subjectTypes = [{
     text: 'Public',
@@ -56,8 +58,11 @@ export class ManageClientComponent implements OnInit {
   public cbClientSecret: boolean = false;
   public cbDisplayClientSecret: boolean = false;
   public typeClientSecret: string = 'password';
+  public cbAccessTokenValiditySeconds: boolean = false;
+  public cbRefreshToken: boolean = false;
+  public cbRefreshTokenTimeout: boolean = true;
 
-  private clientId: string;
+  private id?: number;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -70,10 +75,10 @@ export class ManageClientComponent implements OnInit {
   public ngOnInit() {
     this.activatedRoute.params
       .flatMap((params: Params) => {
-        this.clientId = params['id'];
-        if (this.clientId) {
+        this.id = +params['id'];
+        if (this.id) {
           // edit
-          return this.clientService.getById(this.clientId);
+          return this.clientService.getById(this.id);
         } else {
           // new
           this.cbClientSecret = true;
@@ -85,16 +90,47 @@ export class ManageClientComponent implements OnInit {
       });
   }
 
-  public clientSecretChange(value) {
-    this.cbClientSecret = value[1];
+  public clientSecretChange() {
+    if (this.cbClientSecret)
+      delete this.client.clientSecret;
   }
 
-  public displayClientSecretChange(value) {
-    this.cbDisplayClientSecret = value[1];
+  public displayClientSecretChange() {
     this.typeClientSecret = this.cbDisplayClientSecret ? 'text' : 'password';
   }
 
+  public accessTokenValiditySecondsChange() {
+    if (this.cbAccessTokenValiditySeconds)
+      delete this.client.accessTokenValiditySeconds;
+  }
+
+  public refreshTokenChange() {
+    let index = this.client.grantTypes.indexOf(REFRESH_TOKEN);
+    if (this.cbRefreshToken) {
+      if (index === -1)
+        this.client.grantTypes.push(REFRESH_TOKEN);
+      if (this.client.clearAccessTokensOnRefresh === undefined)
+        this.client.clearAccessTokensOnRefresh = true;
+      if (this.client.reuseRefreshToken === undefined)
+        this.client.reuseRefreshToken = true;
+    }
+    else {
+      if (index > -1)
+        this.client.grantTypes.slice(index, 1);
+    }
+  }
+
+  public refreshTokenTimeoutChange() {
+    if (this.cbRefreshTokenTimeout)
+      delete this.client.refreshTokenValiditySeconds;
+  }
+
   public save() {
-    console.log(this.client.responseTypes);
+    console.log(JSON.stringify(this.client));
+    // if (this.id) {
+    //   this.clientService.create(this.client);
+    // } else {
+    //   this.clientService.update(this.client);
+    // }
   }
 }

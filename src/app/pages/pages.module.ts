@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { NgModule } from '@angular/core';
 import { NgaModule } from '../theme/nga.module';
+import { PagerService } from './services/pager.service';
 import { Pages } from './pages.component';
 import { ScopeService } from './services/scope.service';
 import { SiteService } from './services/site.service';
@@ -14,7 +15,7 @@ import { routing } from './pages.routing';
 @NgModule({
   imports: [CommonModule, AppTranslationModule, NgaModule, AuthModule, routing],
   declarations: [Pages],
-  providers: [ClientService, ScopeService, SiteService, TokenService]
+  providers: [PagerService, ClientService, ScopeService, SiteService, TokenService]
 })
 export class PagesModule {
 

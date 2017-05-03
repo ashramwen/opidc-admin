@@ -32,7 +32,8 @@
                   <label class="form-control-label" for="inputClientName">Client Name</label>
                 </div>
                 <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputClientName" placeholder="Human-readable application name" [(ngModel)]="client.clientName" required>
+                  <input type="text" class="form-control" id="inputClientName" placeholder="Human-readable application name" [(ngModel)]="client.clientName"
+                    required>
                   <label>Human-readable application name</label>
                 </div>
               </div>
@@ -177,12 +178,12 @@
                 </div>
                 <div fxFlex="30%">
                   <div>
-                    <app-checkbox [checked]="cbClientSecret" value="cbClientSecret" text="Generate a new client secret?" (onChange)="clientSecretChange($event)"></app-checkbox>
+                    <app-checkbox [(checked)]="cbClientSecret" value="cbClientSecret" text="Generate a new client secret?" (onChange)="clientSecretChange()"></app-checkbox>
                     <label>New secret will be generated when you click 'Save'</label>
                   </div>
                   <div *ngIf="!cbClientSecret">
                     <span>Display/edit client secret:</span>
-                    <app-checkbox [checked]="cbDisplayClientSecret" value="cbDisplayClientSecret" (onChange)="displayClientSecretChange($event)"></app-checkbox>
+                    <app-checkbox [(checked)]="cbDisplayClientSecret" value="cbDisplayClientSecret" (onChange)="displayClientSecretChange($event)"></app-checkbox>
                     <input [type]="typeClientSecret" class="form-control" id="inputClientSecret" placeholder="Generate on Save" [(ngModel)]="client.clientSecret">
                   </div>
                 </div>
@@ -211,10 +212,13 @@
                   <label class="form-control-label">Access Token Timeout</label>
                 </div>
                 <div fxFlex="30%">
-                  <div>
-                    <app-checkbox [checked]="cbClientSecret" value="cbClientSecret" text="Access tokens do not time out" (onChange)="clientSecretChange($event)"></app-checkbox>
-                    <label>New secret will be generated when you click 'Save'</label>
+                  <app-checkbox [(checked)]="cbAccessTokenValiditySeconds" text="Access tokens do not time out" (onChange)="accessTokenValiditySecondsChange($event)"></app-checkbox>
+                  <div class="input-group">
+                    <input type="text" class="form-control with-info-addon" placeholder="Access Token Timeout" aria-describedby="accessTokenValiditySeconds"
+                      [(ngModel)]="client.accessTokenValiditySeconds" [disabled]="cbAccessTokenValiditySeconds">
+                    <span class="input-group-addon input-group-addon-info addon-right" id="accessTokenValiditySeconds">seconds</span>
                   </div>
+                  <label>Enter this time in seconds.</label>
                 </div>
               </div>
 
@@ -223,7 +227,12 @@
                   <label class="form-control-label">ID Token Timeout</label>
                 </div>
                 <div fxFlex="30%">
-
+                  <div class="input-group">
+                    <input type="text" class="form-control with-info-addon" placeholder="ID Token Timeout" aria-describedby="idTokenValiditySeconds"
+                      [(ngModel)]="client.idTokenValiditySeconds">
+                    <span class="input-group-addon input-group-addon-info addon-right" id="idTokenValiditySeconds">seconds</span>
+                  </div>
+                  <label>Enter this time in seconds.</label>
                 </div>
               </div>
 
@@ -232,7 +241,18 @@
                   <label class="form-control-label">Refresh Tokens</label>
                 </div>
                 <div fxFlex="30%">
-
+                  <app-checkbox [(checked)]="cbRefreshToken" text="Refresh tokens are issued for this client" (onChange)="refreshTokenChange($event)"></app-checkbox>
+                  <div *ngIf="cbRefreshToken">
+                    <app-checkbox [(checked)]="client.reuseRefreshToken" text="Refresh tokens for this client are re-used"></app-checkbox>
+                    <app-checkbox [(checked)]="client.clearAccessTokensOnRefresh" text="Active access tokens are automatically revoked when the refresh token is used"></app-checkbox>
+                    <app-checkbox [(checked)]="cbRefreshTokenTimeout" text="Refresh tokens do not time out" (onChange)="refreshTokenTimeoutChange()"></app-checkbox>
+                    <div class="input-group">
+                      <input type="text" class="form-control with-info-addon" placeholder="ID Token Timeout" aria-describedby="idrefreshTokenValiditySeconds"
+                        [(ngModel)]="client.refreshTokenValiditySeconds" [disabled]="cbRefreshTokenTimeout">
+                      <span class="input-group-addon input-group-addon-info addon-right" id="idrefreshTokenValiditySeconds">seconds</span>
+                    </div>
+                    <label>Enter this time in seconds.</label>
+                  </div>
                 </div>
               </div>
 

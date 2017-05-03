@@ -8,7 +8,7 @@ export class ConfigHelper {
    * @param paths
    * @return {string} url
    */
-  public buildUrl(apiPath: string, paths: string[] = []): string {
+  public buildUrl(apiPath: string, paths: string[] | number[] = []): string {
     return [BASE_CONFIG.siteUrl, `api/${apiPath}`, ...paths].join('/');
   }
 }

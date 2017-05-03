@@ -1,5 +1,5 @@
 export class Client {
-  accessTokenValiditySeconds?: number;
+  accessTokenValiditySeconds?: number = 3600;
   allowIntrospection: boolean = true;
   applicationType?: any;
   authorities?: any[];
@@ -20,7 +20,7 @@ export class Client {
   idTokenEncryptedResponseAlg?: any;
   idTokenEncryptedResponseEnc?: any;
   idTokenSignedResponseAlg?: any;
-  idTokenValiditySeconds?: number;
+  idTokenValiditySeconds?: number = 600;
   initiateLoginUri?: any;
   jwks?: any;
   jwksUri?: string;

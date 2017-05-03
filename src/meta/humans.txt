@@ -3,14 +3,14 @@
 
 # TEAM
 
-  akveo.com
+  kii.com
 
 # THANKS
 
   <name>
-  Akveo Team
+  Kii Team
 
 # TECHNOLOGY COLOPHON
 
   HTML5, CSS3, Bootstrap
-  Angular2, TypeScript, Webpack
+  Angular4, TypeScript, Webpack

@@ -6,7 +6,7 @@
           <button type="button" class="btn btn-default" (click)="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button>
         </li>
         <li>
-          <button type="button" class="btn btn-primary" routerLink="./new" ><i class="fa fa-plus-square-o" aria-hidden="true"></i> New Client</button>
+          <button type="button" class="btn btn-primary" routerLink="./new"><i class="fa fa-plus-square-o" aria-hidden="true"></i> New Client</button>
         </li>
       </ul>
     </ba-card>
@@ -21,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let client of clients">
+          <tr *ngFor="let client of pagedClient; trackBy: trackById">
             <td>
               <span class="label label-primary">{{client.id}}</span>
             </td>
@@ -45,6 +45,11 @@
           </tr>
         </tbody>
       </table>
+      <div class="row" *ngIf="totalSize > 10">
+        <div class="col-md-12 col-centered">
+          <ngb-pagination [collectionSize]="totalSize" [(page)]="page" [boundaryLinks]="true" (pageChange)="pageChange()"></ngb-pagination>
+        </div>
+      </div>
     </ba-card>
   </div>
 </div>

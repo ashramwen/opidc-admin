@@ -182,7 +182,7 @@ textarea.form-control {
 
 .input-group {
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   &>span {
     border-radius: 0;
   }
@@ -430,6 +430,10 @@ fieldset[disabled] .form-control {
   @include groupAddon($success);
 }
 
+.input-group-addon-info {
+  @include groupAddon($info);
+}
+
 .input-group-addon-primary {
   @include groupAddon($primary);
 }
@@ -586,6 +590,10 @@ fieldset[disabled] .form-control {
 
 .with-primary-addon:focus {
   border-color: $primary;
+}
+
+.with-info-addon:focus {
+  border-color: $info;
 }
 
 .with-warning-addon:focus {
