@@ -45,7 +45,6 @@ export class ClientService {
   public delete(id: number) {
     let url = this.configHelper.buildUrl(RESOURCE.CLIENT, [id]);
     return this.http
-      .delete(url)
-      .map((res) => res.json());
+      .delete(url);
   }
 }

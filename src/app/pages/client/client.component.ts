@@ -1,8 +1,11 @@
 import { Client, Clients } from '../models/client.model';
 import { Component, OnInit } from '@angular/core';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 import { ClientService } from '../services/client.service';
+import { ConfirmModalComponent } from '../components/index';
 import { PagerService } from './../services/pager.service';
+import { Response } from '@angular/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,6 +22,7 @@ export class ClientComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private modal: NgbModal,
     private clientService: ClientService,
     private pagerService: PagerService
   ) { }
@@ -39,12 +43,13 @@ export class ClientComponent implements OnInit {
     this.router.navigate(['new']);
   }
 
-  public edit(id) {
-
-  }
-
-  public delete(id) {
-
+  public delete(id: number) {
+    let activeModal = this.modal.open(ConfirmModalComponent);
+    activeModal.componentInstance.modalHeader = 'Delete client';
+    activeModal.componentInstance.modalContent = 'Are you sure sure you would like to delete this client?';
+    activeModal.componentInstance.confirmText = 'DELETE';
+    activeModal.componentInstance.confirmClass = 'danger';
+    activeModal.componentInstance.confirm = this.deleteClient.bind(this, activeModal, id);
   }
 
   public trackById(index: number, client: Client): number {
@@ -56,6 +61,13 @@ export class ClientComponent implements OnInit {
     this.pagedClient = this.clients.slice(pager.startIndex, pager.endIndex + 1);
   }
 
+  public deleteClient(activeModal: NgbModalRef, id: number) {
+    this.clientService.delete(id).subscribe((res: Response) => {
+      activeModal.close();
+      this.refresh();
+    });
+  }
+
   private getClients() {
     this.clientService.get().subscribe((res: Clients) => {
       this.clients = res;
@@ -63,6 +75,4 @@ export class ClientComponent implements OnInit {
       this.pageChange();
     });
   }
-
-  // Are you sure sure you would like to delete this client?
 }

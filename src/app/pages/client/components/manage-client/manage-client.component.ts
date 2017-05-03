@@ -1,4 +1,4 @@
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 
 import { Client } from './../../../models/client.model';
@@ -65,6 +65,7 @@ export class ManageClientComponent implements OnInit {
   private id?: number;
 
   constructor(
+    private router: Router,
     private activatedRoute: ActivatedRoute,
     private clientService: ClientService,
     private scopeService: ScopeService
@@ -126,11 +127,15 @@ export class ManageClientComponent implements OnInit {
   }
 
   public save() {
-    console.log(JSON.stringify(this.client));
-    // if (this.id) {
-    //   this.clientService.create(this.client);
-    // } else {
-    //   this.clientService.update(this.client);
-    // }
+    // console.log(JSON.stringify(this.client));
+    if (this.id) {
+      this.clientService.update(this.client).subscribe(res => {
+        this.router.navigate(['pages', 'client']);
+      });
+    } else {
+      this.clientService.create(this.client).subscribe(res => {
+        this.router.navigate(['pages', 'client']);
+      });
+    }
   }
 }

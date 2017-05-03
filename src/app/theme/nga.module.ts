@@ -27,6 +27,7 @@ import {
 import {
   CheckboxComponent,
   CheckboxListComponent,
+  ConfirmModalComponent,
   EditListComponent,
   RadioListComponent,
   ScopeListComponent,
@@ -67,7 +68,8 @@ const NGA_COMPONENTS = [
   EditListComponent,
   RadioListComponent,
   ScopeListComponent,
-  TagComponent
+  TagComponent,
+  ConfirmModalComponent
 ];
 
 const NGA_DIRECTIVES = [
@@ -108,6 +110,9 @@ const NGA_VALIDATORS = [
     AppTranslationModule,
     AuthModule,
     FlexLayoutModule
+  ],
+  entryComponents: [
+    ConfirmModalComponent
   ],
   exports: [
     ...NGA_PIPES,
