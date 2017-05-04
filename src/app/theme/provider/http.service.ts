@@ -32,7 +32,9 @@ export class HttpService extends Http {
     requestOptions.headers = Object.assign(requestOptions.headers, this.basicHeaders);
     // requestOptions.withCredentials = true;
 
-    return super.request(url, requestOptions).catch(this.catchAuthError(this));
+    return super
+      .request(url, requestOptions)
+      .catch(this.catchAuthError(this));
   }
 
   private catchAuthError(self: HttpService) {
@@ -47,6 +49,8 @@ export class HttpService extends Http {
           this.alert(JSON.parse(res['_body']));
           break;
         default:
+          this.router.navigate(['/login']);
+          break;
       }
       return Observable.throw(res);
     };
@@ -61,7 +65,7 @@ export class HttpService extends Http {
     headers.append('Content-Type', 'application/json');
     headers.append(this.meta.getHeader(), this.meta.getValue());
 
-    headers.append('Authorization', 'Basic ' + btoa(username + ':' + password));
+    // headers.append('Authorization', 'Basic ' + btoa(username + ':' + password));
 
     return headers;
   }

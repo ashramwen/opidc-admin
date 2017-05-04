@@ -15,21 +15,6 @@ export class AuthService {
     private meta: MetaService
   ) { }
 
-  // public login(credential: Credential) {
-  //   let url = this.configHelper.buildUrl(RESOURCE.AUTH, ['login']);
-  //   let requestOptions: RequestOptionsArgs = {};
-  //   credential.permanentToken = false;
-  //   return this.http
-  //     .post(url, credential, requestOptions)
-  //     .map((res) => res.json())
-  //     .subscribe((res: User) => {
-  //       // this.localStorageService.set('token', res);
-  //       this.loggedIn = true;
-  //       this.logger.next(this.loggedIn);
-  //       this.router.navigate(['']);
-  //     });
-  // }
-
   public logout() {
     // this.localStorageService.remove('token');
     this.loggedIn = false;
