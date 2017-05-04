@@ -1,3 +1,4 @@
+import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RequestOptions, XHRBackend } from '@angular/http';
 
 import { AuthService } from './provider/auth.service';
@@ -11,12 +12,19 @@ import { RoleGuard } from './provider/role.guard';
 import { Router } from '@angular/router';
 import { localStorageConfig } from './constants/local-storage.config';
 
-export function httpClientFactory(backend: XHRBackend, options: RequestOptions, meta: MetaService, router: Router) {
-  return new HttpService(backend, options, meta, router);
+export function httpClientFactory(
+  backend: XHRBackend,
+  options: RequestOptions,
+  router: Router,
+  meta: MetaService,
+  modal: NgbModal
+) {
+  return new HttpService(backend, options, router, meta, modal);
 }
 
 @NgModule({
   imports: [
+    NgbModule,
     LocalStorageModule.withConfig(localStorageConfig)
   ],
   providers: [
@@ -27,7 +35,7 @@ export function httpClientFactory(backend: XHRBackend, options: RequestOptions, 
     RoleGuard,
     {
       provide: HttpService,
-      deps: [XHRBackend, RequestOptions, MetaService, Router],
+      deps: [XHRBackend, RequestOptions, Router, MetaService, NgbModal],
       useFactory: httpClientFactory
     }
   ]

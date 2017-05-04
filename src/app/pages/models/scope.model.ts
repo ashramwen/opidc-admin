@@ -9,9 +9,7 @@ export class Scope {
   structuredParamDescription?: any;
   structuredValue?: any;
 
-  checked?: boolean;
-
-  constructor(value: string) {
+  constructor(value: string = '') {
     this.value = value;
   }
 }

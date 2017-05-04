@@ -128,14 +128,16 @@ export class ManageClientComponent implements OnInit {
 
   public save() {
     // console.log(JSON.stringify(this.client));
+    this._save().subscribe(res => {
+      this.router.navigate(['pages', 'client']);
+    });
+  }
+
+  private _save() {
     if (this.id) {
-      this.clientService.update(this.client).subscribe(res => {
-        this.router.navigate(['pages', 'client']);
-      });
+      return this.clientService.update(this.client);
     } else {
-      this.clientService.create(this.client).subscribe(res => {
-        this.router.navigate(['pages', 'client']);
-      });
+      return this.clientService.create(this.client);
     }
   }
 }

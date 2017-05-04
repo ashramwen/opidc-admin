@@ -1,3 +1,71 @@
-<p>
-  manage-scope works!
-</p>
+<div class="row">
+  <div class="col-md-12">
+
+    <ba-card>
+      <ul class="btn-list clearfix">
+        <li>
+          <button type="button" class="btn btn-success" (click)="save()"><i class="fa fa-check-circle-o" aria-hidden="true"></i> Save</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default" routerLink="/pages/scope"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
+        </li>
+      </ul>
+    </ba-card>
+
+    <ba-card class="form-horizontal">
+      <div fxLayout="row" class="form-group">
+
+        <div fxFlex="10%" class="text-right">
+          <label class="form-control-label" for="inputScopeValue">Scope value</label>
+        </div>
+        <div fxFlex="30%" [ngClass]="{'has-error': scopeValue.errors && (scopeValue.dirty || scopeValue.touched)}">
+          <input type="text" class="form-control" id="inputScopeValue" placeholder="Scope" name="scopeValue" required #scopeValue="ngModel" [(ngModel)]="scope.value">
+          <label>Single string with no spaces</label>
+        </div>
+      </div>
+
+      <div fxLayout="row" class="form-group">
+        <div fxFlex="10%" class="text-right">
+          <label class="form-control-label" for="inputDesc">Description</label>
+        </div>
+        <div fxFlex="30%">
+          <textarea class="form-control" id="inputDesc" placeholder="Type a description" [(ngModel)]="scope.description"></textarea>
+          <label>Human-readable text description</label>
+        </div>
+      </div>
+
+      <div fxLayout="row" class="form-group">
+        <div fxFlex="10%" class="text-right">
+          <span class="label label-success fa fa-flag-o"></span>
+        </div>
+        <div fxFlex="30%">
+          <app-checkbox [(checked)]="scope.defaultScope" text="default scope"></app-checkbox>
+          <label>Newly-created clients get this scope by default?</label>
+        </div>
+      </div>
+
+      <div fxLayout="row" class="form-group">
+        <div fxFlex="10%" class="text-right">
+          <span class="label label-warning fa fa-ban"></span>
+        </div>
+        <div fxFlex="30%">
+          <app-checkbox [(checked)]="scope.restricted" text="restricted"></app-checkbox>
+          <label>Restricted scopes are only usable by system administrators and are unavailable to dynamically registered clients and protected resources</label>
+        </div>
+      </div>
+
+    </ba-card>
+
+    <ba-card>
+      <ul class="btn-list clearfix">
+        <li>
+          <button type="button" class="btn btn-success" (click)="save()"><i class="fa fa-check-circle-o" aria-hidden="true"></i> Save</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default" routerLink="/pages/scope"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
+        </li>
+      </ul>
+    </ba-card>
+
+  </div>
+</div>

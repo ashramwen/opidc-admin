@@ -1,3 +1,4 @@
+export * from './alert-modal/alert-modal.component'
 export * from './checkbox/checkbox.component'
 export * from './checkbox-list/checkbox-list.component'
 export * from './confirm-modal/confirm-modal.component'

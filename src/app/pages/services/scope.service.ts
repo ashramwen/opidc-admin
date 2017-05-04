@@ -21,10 +21,30 @@ export class ScopeService {
       .map((res) => res.json());
   }
 
-  public add(scope: Scope) {
+  public getById(id: number) {
+    let url = this.configHelper.buildUrl(RESOURCE.SCOPES, [id]);
+    return this.http
+      .get(url)
+      .map((res) => res.json());
+  }
+
+  public create(scope: Scope) {
     let url = this.configHelper.buildUrl(RESOURCE.SCOPES);
     return this.http
       .post(url, scope)
       .map((res) => res.json());
+  }
+
+  public update(scope: Scope) {
+    let url = this.configHelper.buildUrl(RESOURCE.SCOPES, [scope.id]);
+    return this.http
+      .put(url, scope)
+      .map((res) => res.json());
+  }
+
+  public delete(id: number) {
+    let url = this.configHelper.buildUrl(RESOURCE.SCOPES, [id]);
+    return this.http
+      .delete(url);
   }
 }

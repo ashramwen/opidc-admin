@@ -15,7 +15,13 @@ import { routing } from './pages.routing';
 @NgModule({
   imports: [CommonModule, AppTranslationModule, NgaModule, AuthModule, routing],
   declarations: [Pages],
-  providers: [PagerService, ClientService, ScopeService, SiteService, TokenService]
+  providers: [
+    ClientService,
+    PagerService,
+    ScopeService,
+    SiteService,
+    TokenService
+  ]
 })
 export class PagesModule {
 

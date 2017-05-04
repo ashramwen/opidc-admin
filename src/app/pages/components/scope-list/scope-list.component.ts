@@ -1,6 +1,7 @@
+import { ClientScope, ClientScopes } from '../../models/client-scope.model';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Scope, Scopes } from './../../models/scope.model';
 
+import { Scope } from './../../models/scope.model';
 import { ScopeService } from './../../services/scope.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { ScopeService } from './../../services/scope.service';
 export class ScopeListComponent implements OnInit {
 
   public text: string;
-  public scopes: Scopes;
+  public scopes: ClientScopes;
 
   @Input()
   public placeholder: string = 'https://';
@@ -41,7 +42,7 @@ export class ScopeListComponent implements OnInit {
     if (!this._items)
       this._items = [];
 
-    this.scopeService.get().subscribe((res: Scopes) => {
+    this.scopeService.get().subscribe((res: ClientScopes) => {
       this.scopes = res;
       this.scopes.forEach(scope => {
         if (scope.defaultScope)
@@ -52,7 +53,7 @@ export class ScopeListComponent implements OnInit {
     });
   }
 
-  public change(scope: Scope) {
+  public change(scope: ClientScope) {
     scope.checked = !scope.checked;
     if (scope.checked) {
       if (this._items.indexOf(scope.value) > -1) return;
@@ -68,7 +69,7 @@ export class ScopeListComponent implements OnInit {
   public add() {
     if (!this.text) return;
     let scope = new Scope(this.text);
-    this.scopeService.add(scope).subscribe((res: Scope) => {
+    this.scopeService.create(scope).subscribe((res: ClientScope) => {
       this.text = undefined;
       this.scopes.push(res);
     });

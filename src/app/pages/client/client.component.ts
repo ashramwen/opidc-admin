@@ -6,7 +6,6 @@ import { ClientService } from '../services/client.service';
 import { ConfirmModalComponent } from '../components/index';
 import { PagerService } from './../services/pager.service';
 import { Response } from '@angular/http';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client',
@@ -21,7 +20,6 @@ export class ClientComponent implements OnInit {
   public page: number = 1;
 
   constructor(
-    private router: Router,
     private modal: NgbModal,
     private clientService: ClientService,
     private pagerService: PagerService
@@ -39,14 +37,10 @@ export class ClientComponent implements OnInit {
     this.getClients();
   }
 
-  public new() {
-    this.router.navigate(['new']);
-  }
-
   public delete(id: number) {
     let activeModal = this.modal.open(ConfirmModalComponent);
     activeModal.componentInstance.modalHeader = 'Delete client';
-    activeModal.componentInstance.modalContent = 'Are you sure sure you would like to delete this client?';
+    activeModal.componentInstance.modalContent = 'Are you sure you would like to delete this client?';
     activeModal.componentInstance.confirmText = 'DELETE';
     activeModal.componentInstance.confirmClass = 'danger';
     activeModal.componentInstance.confirm = this.deleteClient.bind(this, activeModal, id);
@@ -61,7 +55,7 @@ export class ClientComponent implements OnInit {
     this.pagedClient = this.clients.slice(pager.startIndex, pager.endIndex + 1);
   }
 
-  public deleteClient(activeModal: NgbModalRef, id: number) {
+  private deleteClient(activeModal: NgbModalRef, id: number) {
     this.clientService.delete(id).subscribe((res: Response) => {
       activeModal.close();
       this.refresh();

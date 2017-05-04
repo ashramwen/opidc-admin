@@ -1,4 +1,14 @@
 import {
+  AlertModalComponent,
+  CheckboxComponent,
+  CheckboxListComponent,
+  ConfirmModalComponent,
+  EditListComponent,
+  RadioListComponent,
+  ScopeListComponent,
+  TagComponent,
+} from '../pages/components';
+import {
   BaAppPicturePipe,
   BaProfilePicturePipe,
 } from './pipes';
@@ -24,15 +34,6 @@ import {
   BaSlimScroll,
   BaThemeRun,
 } from './directives';
-import {
-  CheckboxComponent,
-  CheckboxListComponent,
-  ConfirmModalComponent,
-  EditListComponent,
-  RadioListComponent,
-  ScopeListComponent,
-  TagComponent,
-} from '../pages/components';
 import {
   EmailValidator,
   EqualPasswordsValidator,
@@ -64,13 +65,14 @@ const NGA_COMPONENTS = [
   BaMultiCheckbox,
   BaPageTop,
   BaSidebar,
+  AlertModalComponent,
   CheckboxComponent,
   CheckboxListComponent,
+  ConfirmModalComponent,
   EditListComponent,
   RadioListComponent,
   ScopeListComponent,
   TagComponent,
-  ConfirmModalComponent
 ];
 
 const NGA_DIRECTIVES = [
@@ -114,6 +116,7 @@ const NGA_VALIDATORS = [
     FlexLayoutModule
   ],
   entryComponents: [
+    AlertModalComponent,
     ConfirmModalComponent
   ],
   exports: [
