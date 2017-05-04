@@ -25,7 +25,7 @@ export const routes: Routes = [{
     {
       path: 'scope',
       loadChildren: 'app/pages/scope/scope.module#ScopeModule',
-      canActivate: [LoginGuard]
+      canActivate: [LoginGuard, RoleGuard]
     },
     {
       path: 'site',

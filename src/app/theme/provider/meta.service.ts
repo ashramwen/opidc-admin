@@ -31,6 +31,11 @@ export class MetaService {
   }
 
   public getRole(): Role {
-    return Role[this.metas['_role'].content as string];
+    let roles = (this.metas['_role'].content as string).replace(/[\[\] ]/g, '').split(',');
+    let role = Role.NONE;
+    roles.forEach(r => {
+      role = (role | Role[r]);
+    });
+    return role;
   }
 }

@@ -37,7 +37,8 @@ if(helpers.isWebpackDevServer()) {
     'header': 'X-CSRF-TOKEN',
     'value': '4c39e5d9-bd35-477b-a437-bdc0e4604d8f'
   };
-  ROLE = '[ROLE_ADMIN, ROLE_USER]';
+  // ROLE = '[ROLE_ADMIN, ROLE_USER]';
+  ROLE = '[ROLE_USER]';
   BASE = '/';
 }
 

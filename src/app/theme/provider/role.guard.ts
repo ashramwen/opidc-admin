@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Role } from '../model/role.enum';
 
 @Injectable()
 export class RoleGuard implements CanActivate {
@@ -14,11 +15,13 @@ export class RoleGuard implements CanActivate {
 
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.authService.isLoggedIn()) {
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
+    let role = this.authService.getRole();
+    if (role & Role.ROLE_ADMIN) {
       return true;
     } else {
-      this.router.navigateByUrl('/page/profile');
+      this.router.navigateByUrl('/pages/site');
       return false;
     }
   }
