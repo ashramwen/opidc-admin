@@ -20,7 +20,7 @@
         <div>{{token.expiration | date | expires}}</div>
       </td>
       <td>
-        <button type="button" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> Revoke</button>
+        <button type="button" class="btn btn-danger" (click)="revoke(token.id)"><i class="fa fa-trash-o" aria-hidden="true"></i> Revoke</button>
       </td>
     </tr>
   </tbody>

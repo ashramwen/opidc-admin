@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { OpidcToken, OpidcTokens } from '../models/token.interface';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 
-import { TokenService } from '../services/token.service';
+import { TokenListComponent } from './components/token-list/token-list.component';
 
 @Component({
   selector: 'app-token',
@@ -10,30 +9,15 @@ import { TokenService } from '../services/token.service';
 })
 export class TokenComponent implements OnInit {
 
-  public accessTokens: OpidcTokens;
-  public refreshTokens: OpidcTokens;
+  @ViewChildren(TokenListComponent)
+  public tokenLists: QueryList<TokenListComponent>;
 
-  public activeTab: string = 'access';
-
-  constructor(
-    private tokenService: TokenService
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-    this.getToken();
   }
 
   public refresh() {
-    this.accessTokens = undefined;
-    this.refreshTokens = undefined;
-    this.getToken();
-  }
-
-  private getToken() {
-    this.tokenService.getAccessToken()
-      .subscribe((res: OpidcTokens) => this.accessTokens = res);
-
-    this.tokenService.getRefreshToken()
-      .subscribe((res: OpidcTokens) => this.refreshTokens = res);
+    this.tokenLists.forEach(o => o.refresh());
   }
 }

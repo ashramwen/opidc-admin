@@ -32,7 +32,7 @@
               <div>Expires: {{site.timeoutDate | date | expires}}</div>
             </td>
             <td>
-              <button type="button" class="btn btn-danger">Revoke</button>
+              <button type="button" class="btn btn-danger" (click)="revoke(site.id)"><i class="fa fa-trash-o" aria-hidden="true"></i> Revoke</button>
             </td>
           </tr>
         </tbody>

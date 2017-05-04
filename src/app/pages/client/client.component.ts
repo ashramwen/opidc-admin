@@ -51,6 +51,7 @@ export class ClientComponent implements OnInit {
   }
 
   public pageChange() {
+    if (!this.clients) return;
     let pager = this.pagerService.getPager(this.clients.length, this.page);
     this.pagedClient = this.clients.slice(pager.startIndex, pager.endIndex + 1);
   }

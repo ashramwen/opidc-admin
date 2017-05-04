@@ -13,6 +13,13 @@ export class TokenService {
     private http: HttpService
   ) { }
 
+  public getToken(type: string) {
+    let url = this.configHelper.buildUrl(RESOURCE.TOKEN, [type]);
+    return this.http
+      .get(url)
+      .map((res) => res.json());
+  }
+
   public getAccessToken() {
     let url = this.configHelper.buildUrl(RESOURCE.TOKEN, ['access']);
     return this.http
@@ -25,5 +32,11 @@ export class TokenService {
     return this.http
       .get(url)
       .map((res) => res.json());
+  }
+
+  public delete(id: number) {
+    let url = this.configHelper.buildUrl(RESOURCE.TOKEN, [id]);
+    return this.http
+      .get(url);
   }
 }

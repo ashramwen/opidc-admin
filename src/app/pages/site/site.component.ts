@@ -1,8 +1,11 @@
 import { ApprovedSite, ApprovedSites } from '../models/site.interface';
 import { Component, OnInit } from '@angular/core';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
+import { ConfirmModalComponent } from './../components/confirm-modal/confirm-modal.component';
 import { DatePipe } from '@angular/common';
 import { PagerService } from './../services/pager.service';
+import { Response } from '@angular/http';
 import { SiteService } from '../services/site.service';
 
 @Component({
@@ -19,6 +22,7 @@ export class SiteComponent implements OnInit {
 
   constructor(
     private datePipe: DatePipe,
+    private modal: NgbModal,
     private siteService: SiteService,
     private pagerService: PagerService
   ) { }
@@ -44,8 +48,20 @@ export class SiteComponent implements OnInit {
     return site.id;
   }
 
-  public showExpire(value) {
-    return value ? this.datePipe.transform(value) : 'Never';
+  public revoke(id: number) {
+    let activeModal = this.modal.open(ConfirmModalComponent);
+    activeModal.componentInstance.modalHeader = 'Revoke site';
+    activeModal.componentInstance.modalContent = 'Are you sure you want to revoke access to this site?';
+    activeModal.componentInstance.confirmText = 'REVOKE';
+    activeModal.componentInstance.confirmClass = 'danger';
+    activeModal.componentInstance.confirm = this._revoke.bind(this, activeModal, id);
+  }
+
+  private _revoke(activeModal: NgbModalRef, id: number) {
+    this.siteService.delete(id).subscribe((res: Response) => {
+      activeModal.close();
+      this.refresh();
+    });
   }
 
   private getSite() {

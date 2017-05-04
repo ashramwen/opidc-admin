@@ -19,4 +19,10 @@ export class SiteService {
       .get(url)
       .map((res) => res.json());
   }
+
+  public delete(id: number) {
+    let url = this.configHelper.buildUrl(RESOURCE.SITE_APPROVED, [id]);
+    return this.http
+      .delete(url);
+  }
 }

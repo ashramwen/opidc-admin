@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Scope, Scopes } from '../models/scope.model';
 
 import { ConfirmModalComponent } from './../components/confirm-modal/confirm-modal.component';
 import { Response } from '@angular/http';
 import { ScopeService } from '../services/scope.service';
-import { Scopes } from '../models/scope.model';
 
 @Component({
   selector: 'app-scope',
@@ -28,10 +28,14 @@ export class ScopeComponent implements OnInit {
     this.getScope();
   }
 
+  public trackById(index: number, scope: Scope): number {
+    return scope.id;
+  }
+
   public delete(id: number) {
     let activeModal = this.modal.open(ConfirmModalComponent);
-    activeModal.componentInstance.modalHeader = 'Delete client';
-    activeModal.componentInstance.modalContent = 'Are you sure you would like to delete this scope? Clients that have this scope will still be able to ask for it.';
+    activeModal.componentInstance.modalHeader = 'Delete scope';
+    activeModal.componentInstance.modalContent = 'Are you sure you would like to delete this scope?<br>Clients that have this scope will still be able to ask for it.';
     activeModal.componentInstance.confirmText = 'DELETE';
     activeModal.componentInstance.confirmClass = 'danger';
     activeModal.componentInstance.confirm = this._delete.bind(this, activeModal, id);
