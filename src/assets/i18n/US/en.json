@@ -1,4 +1,7 @@
 {
+  "client": {
+    "confirmDelete": "Are you sure you would like to delete this client?"
+  },
   "general": {
     "akveo": "Akveo",
     "home": "Home",
@@ -10,5 +13,15 @@
       "token": "Active Token"
     },
     "created_with": "Created with"
+  },
+  "mitreid_error": "Error",
+  "scope": {
+    "confirmDelete": "Are you sure you would like to delete this scope?<br>Clients that have this scope will still be able to ask for it."
+  },
+  "site": {
+    "confirmRevoke": "Are you sure you want to revoke access to this site?"
+  },
+  "token": {
+    "confirmRevoke": "Are you sure you want to revoke this token?"
   }
 }

@@ -54,7 +54,7 @@ export class TokenListComponent implements OnInit {
   public revoke(id: number) {
     let activeModal = this.modal.open(ConfirmModalComponent);
     activeModal.componentInstance.modalHeader = 'Revoke token';
-    activeModal.componentInstance.modalContent = 'Are you sure you want to revoke this token?';
+    activeModal.componentInstance.modalContent = 'token.confirmRevoke';
     activeModal.componentInstance.confirmText = 'REVOKE';
     activeModal.componentInstance.confirmClass = 'danger';
     activeModal.componentInstance.confirm = this._revoke.bind(this, activeModal, id);

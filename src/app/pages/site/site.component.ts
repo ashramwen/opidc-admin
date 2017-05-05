@@ -51,7 +51,7 @@ export class SiteComponent implements OnInit {
   public revoke(id: number) {
     let activeModal = this.modal.open(ConfirmModalComponent);
     activeModal.componentInstance.modalHeader = 'Revoke site';
-    activeModal.componentInstance.modalContent = 'Are you sure you want to revoke access to this site?';
+    activeModal.componentInstance.modalContent = 'site.confirmRevoke';
     activeModal.componentInstance.confirmText = 'REVOKE';
     activeModal.componentInstance.confirmClass = 'danger';
     activeModal.componentInstance.confirm = this._revoke.bind(this, activeModal, id);

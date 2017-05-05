@@ -40,7 +40,7 @@ export class ClientComponent implements OnInit {
   public delete(id: number) {
     let activeModal = this.modal.open(ConfirmModalComponent);
     activeModal.componentInstance.modalHeader = 'Delete client';
-    activeModal.componentInstance.modalContent = 'Are you sure you would like to delete this client?';
+    activeModal.componentInstance.modalContent = 'client.confirmDelete';
     activeModal.componentInstance.confirmText = 'DELETE';
     activeModal.componentInstance.confirmClass = 'danger';
     activeModal.componentInstance.confirm = this.deleteClient.bind(this, activeModal, id);

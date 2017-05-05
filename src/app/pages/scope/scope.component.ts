@@ -35,7 +35,7 @@ export class ScopeComponent implements OnInit {
   public delete(id: number) {
     let activeModal = this.modal.open(ConfirmModalComponent);
     activeModal.componentInstance.modalHeader = 'Delete scope';
-    activeModal.componentInstance.modalContent = 'Are you sure you would like to delete this scope?<br>Clients that have this scope will still be able to ask for it.';
+    activeModal.componentInstance.modalContent = 'scope.confirmDelete';
     activeModal.componentInstance.confirmText = 'DELETE';
     activeModal.componentInstance.confirmClass = 'danger';
     activeModal.componentInstance.confirm = this._delete.bind(this, activeModal, id);

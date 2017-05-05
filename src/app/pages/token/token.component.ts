@@ -1,4 +1,4 @@
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, QueryList, ViewChildren } from '@angular/core';
 
 import { TokenListComponent } from './components/token-list/token-list.component';
 
@@ -7,15 +7,12 @@ import { TokenListComponent } from './components/token-list/token-list.component
   templateUrl: './token.component.html',
   styleUrls: ['./token.component.scss']
 })
-export class TokenComponent implements OnInit {
+export class TokenComponent {
 
   @ViewChildren(TokenListComponent)
   public tokenLists: QueryList<TokenListComponent>;
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
   public refresh() {
     this.tokenLists.forEach(o => o.refresh());
