@@ -12,6 +12,10 @@ import { RoleGuard } from '../theme/provider/role.guard';
 export const routes: Routes = [{
   path: 'login',
   loadChildren: 'app/pages/login/login.module#LoginModule'
+// }, {
+//   path: 'authorize',
+//   loadChildren: 'app/pages/authorize/authorize.module#AuthorizeModule',
+//   canActivate: [LoginGuard]
 }, {
   path: 'pages',
   component: Pages,
