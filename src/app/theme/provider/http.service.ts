@@ -11,8 +11,6 @@ import { Router } from '@angular/router';
 // import 'rxjs/add/operator/map';
 // import 'rxjs/add/operator/catch';
 
-
-
 @Injectable()
 export class HttpService extends Http {
 
@@ -35,6 +33,30 @@ export class HttpService extends Http {
     return super
       .request(url, requestOptions)
       .catch(this.catchAuthError(this));
+  }
+
+  get(url: string, paths: any[] = [], options?: RequestOptionsArgs): Observable<Response> {
+    url = this.buildUrl(url, paths);
+    return super.get(url, options);
+  }
+
+  post(url: string, paths: any[] = [], body: any, options?: RequestOptionsArgs): Observable<Response> {
+    url = this.buildUrl(url, paths);
+    return super.post(url, body, options);
+  }
+
+  put(url: string, paths: any[] = [], body: any, options?: RequestOptionsArgs): Observable<Response> {
+    url = this.buildUrl(url, paths);
+    return super.put(url, body, options);
+  }
+
+  delete(url: string, paths: any[] = [], options?: RequestOptionsArgs): Observable<Response> {
+    url = this.buildUrl(url, paths);
+    return super.delete(url, options);
+  }
+
+  private buildUrl(apiPath: string, paths: any[] = []): string {
+    return [BASE_CONFIG.siteUrl, `api/${apiPath}`, ...paths].join('/');
   }
 
   private catchAuthError(self: HttpService) {

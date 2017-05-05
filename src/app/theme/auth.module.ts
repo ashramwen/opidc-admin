@@ -2,7 +2,6 @@ import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RequestOptions, XHRBackend } from '@angular/http';
 
 import { AuthService } from './provider/auth.service';
-import { ConfigHelper } from './provider/config-helper';
 import { HttpService } from './provider/http.service';
 import { LoginGuard } from './provider/login.guard';
 import { MetaService } from './provider/meta.service';
@@ -27,7 +26,6 @@ export function httpClientFactory(
   providers: [
     MetaService,
     AuthService,
-    ConfigHelper,
     LoginGuard,
     RoleGuard,
     {
