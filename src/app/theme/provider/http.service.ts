@@ -66,7 +66,7 @@ export class HttpService extends Http {
     headers.set('Content-Type', 'application/json');
     headers.set(xsrf.header, xsrf.value);
 
-    headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
+    // headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
 
     return headers;
   }

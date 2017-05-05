@@ -138,7 +138,8 @@ export class BaMenuService {
   protected _selectItem(object: any): any {
     object.selected = this._router.isActive(
       this._router.createUrlTree(object.route.paths),
-      object.pathMatch === 'full'
+      // object.pathMatch === 'full'
+      false
     );
     return object;
   }
