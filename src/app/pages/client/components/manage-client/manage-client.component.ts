@@ -1,5 +1,6 @@
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
+import { GRANT_TYPE, RESPONSE_TYPE, SUBJECT_TYPE } from './manage-client.const';
 
 import { Client } from './../../../models/client.model';
 import { ClientService } from './../../../services/client.service';
@@ -18,42 +19,9 @@ export class ManageClientComponent implements OnInit {
   @Input()
   public client: Client;
 
-  public responseTypes = [{
-    text: 'CODE',
-    value: 'code'
-  }, {
-    text: 'TOKEN',
-    value: 'token'
-  }, {
-    text: 'ID_TOKEN',
-    value: 'id_token'
-  }];
-
-  public grantTypes = [{
-    text: 'authorization code',
-    value: 'authorization_code'
-  }, {
-    text: 'client credentials',
-    value: 'client_credentials'
-  }, {
-    text: 'password',
-    value: 'password'
-  }, {
-    text: 'implicit',
-    value: 'implicit'
-  }/*, {
-    text: 'refresh token',
-    value: 'refresh_token'
-  }*/];
-
-  public subjectTypes = [{
-    text: 'Public',
-    value: 'PUBLIC',
-    checked: true
-  }, {
-    text: 'Pairwise',
-    value: 'PAIRWISE'
-  }];
+  public grantTypes = GRANT_TYPE;
+  public responseTypes = RESPONSE_TYPE;
+  public subjectTypes = SUBJECT_TYPE;
 
   public cbClientSecret: boolean = false;
   public cbDisplayClientSecret: boolean = false;
