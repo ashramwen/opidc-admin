@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { Role } from '../model/role.enum';
 
 @Injectable()
@@ -11,11 +12,9 @@ export class MetaService {
 
   private role: Role;
 
-  private metas: any;
-
-  constructor() {
-    this.metas = document.getElementsByTagName('meta');
-  }
+  constructor(
+    private meta: Meta
+  ) { }
 
   public getCSRF(): any {
     let header = this.getHeader();
@@ -30,23 +29,25 @@ export class MetaService {
     return this.csrf;
   }
 
-  public getHeader(): string {
-    if (!this.metas['_csrf_header']) return;
-    return this.metas['_csrf_header'].content;
-  }
-
-  public getValue(): string {
-    if (!this.metas['_csrf']) return;
-    return this.metas['_csrf'].content;
-  }
-
   public getRole(): Role {
-    let roles = (this.metas['_role'].content as string).replace(/[\[\] ]/g, '').split(',');
-    let role = Role.NONE;
+    let roles = this.getContentFromName('_role').replace(/[\[\] ]/g, '').split(',');
+    this.role = Role.NONE;
     roles.forEach(r => {
-      role = (role | Role[r]);
+      this.role = (this.role | Role[r]);
     });
-    this.role = role;
     return this.role;
+  }
+
+  private getHeader(): string {
+    return this.getContentFromName('_csrf_header');
+  }
+
+  private getValue(): string {
+    return this.getContentFromName('_csrf');
+  }
+
+  private getContentFromName(name: string): string {
+    let metaTag = this.meta.getTag(`name="${name}"`);
+    return metaTag ? metaTag.content : '';
   }
 }
