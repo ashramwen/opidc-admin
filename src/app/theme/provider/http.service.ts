@@ -57,16 +57,16 @@ export class HttpService extends Http {
   }
 
   private get basicHeaders() {
-    let username: string = 'admin@kii.com';
-    let password: string = 'Kiiadmin2016';
-
     let headers = new Headers();
-    let xsrf = this.meta.getCSRF();
 
     headers.set('Content-Type', 'application/json');
-    headers.set(xsrf.header, xsrf.value);
 
-    // headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
+    let xsrf = this.meta.getCSRF();
+    if (xsrf)
+      headers.set(xsrf.header, xsrf.value);
+
+    if (BASE_CONFIG.username)
+      headers.set('Authorization', 'Basic ' + btoa(BASE_CONFIG.username + ':' + BASE_CONFIG.password));
 
     return headers;
   }

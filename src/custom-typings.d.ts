@@ -122,4 +122,6 @@ interface NodeModule extends WebpackModule {}
 interface Global extends GlobalEnvironment  {}
 declare var BASE_CONFIG: {
     siteUrl: string;
+    username: string;
+    password: string;
 };
