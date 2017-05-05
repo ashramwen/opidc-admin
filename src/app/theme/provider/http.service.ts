@@ -61,11 +61,12 @@ export class HttpService extends Http {
     let password: string = 'Kiiadmin2016';
 
     let headers = new Headers();
+    let xsrf = this.meta.getCSRF();
 
-    headers.append('Content-Type', 'application/json');
-    headers.append(this.meta.getHeader(), this.meta.getValue());
+    headers.set('Content-Type', 'application/json');
+    headers.set(xsrf.header, xsrf.value);
 
-    headers.append('Authorization', 'Basic ' + btoa(username + ':' + password));
+    headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
 
     return headers;
   }

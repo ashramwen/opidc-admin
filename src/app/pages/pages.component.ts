@@ -9,7 +9,7 @@ import { Routes } from '@angular/router';
 })
 export class Pages {
 
-  constructor(private _menuService: BaMenuService,) {
+  constructor(private _menuService: BaMenuService) {
   }
 
   ngOnInit() {

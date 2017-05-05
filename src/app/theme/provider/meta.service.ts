@@ -4,20 +4,30 @@ import { Role } from '../model/role.enum';
 @Injectable()
 export class MetaService {
 
+  private csrf: {
+    header: string,
+    value: string
+  };
+
+  private role: Role;
+
   private metas: any;
+
   constructor() {
     this.metas = document.getElementsByTagName('meta');
   }
 
-  public get(): any {
+  public getCSRF(): any {
     let header = this.getHeader();
     let value = this.getValue();
     if (!header) return;
     if (!value) return;
 
-    let obj: any = {};
-    obj[header] = value;
-    return obj;
+    this.csrf = {
+      header: header,
+      value: value
+    };
+    return this.csrf;
   }
 
   public getHeader(): string {
@@ -36,6 +46,7 @@ export class MetaService {
     roles.forEach(r => {
       role = (role | Role[r]);
     });
-    return role;
+    this.role = role;
+    return this.role;
   }
 }

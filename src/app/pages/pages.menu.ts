@@ -1,3 +1,5 @@
+import { Role } from '../theme/model/role.enum';
+
 export const PAGES_MENU = [
   {
     path: 'pages',
@@ -9,6 +11,7 @@ export const PAGES_MENU = [
             title: 'general.menu.client',
             selected: false,
             expanded: false,
+            role: Role.ROLE_ADMIN,
             order: 0
           }
         }
@@ -20,6 +23,7 @@ export const PAGES_MENU = [
             title: 'general.menu.scope',
             selected: false,
             expanded: false,
+            role: Role.ROLE_ADMIN,
             order: 300
           }
         }
