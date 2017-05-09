@@ -3,7 +3,7 @@
     <h1>Sign in to Open ID Connect</h1>
     <!--<a routerLink="/register" class="auth-link">New to ng2-admin? Sign up!</a>-->
 
-    <form [formGroup]="form" action="/opidc-server/login" class="form-horizontal" (ngSubmit)="onSubmit()" method="post">
+    <form [formGroup]="form" action="/opidc-server/login" class="form-horizontal" method="post" (ngSubmit)="onSubmit($event)">
 
       <div class="form-group row" [ngClass]="{'has-error': (!userName.valid && userName.touched), 'has-success': (userName.valid && userName.touched)}">
         <label for="inputUserName" class="col-sm-2 control-label">UserName</label>

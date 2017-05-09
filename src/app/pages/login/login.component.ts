@@ -26,4 +26,9 @@ export class Login {
     this.userName = this.form.controls['userName'];
     this.password = this.form.controls['password'];
   }
+
+  public onSubmit(event: any) {
+    let form = event.srcElement as HTMLFormElement;
+    form.submit();
+  }
 }
