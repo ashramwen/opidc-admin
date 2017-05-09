@@ -26,11 +26,4 @@ export class Login {
     this.userName = this.form.controls['userName'];
     this.password = this.form.controls['password'];
   }
-
-  // public onSubmit(credential: Credential) {
-  //   this.submitted = false;
-  //   if (this.form.valid) {
-  //     this.auth.login(credential);
-  //   }
-  // }
 }

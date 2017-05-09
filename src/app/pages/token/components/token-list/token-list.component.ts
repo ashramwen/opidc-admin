@@ -61,7 +61,7 @@ export class TokenListComponent implements OnInit {
   }
 
   private _revoke(activeModal: NgbModalRef, id: number) {
-    this.tokenService.delete(id).subscribe((res: Response) => {
+    this.tokenService.delete(this.type, id).subscribe((res: Response) => {
       activeModal.close();
       this.refresh();
     });

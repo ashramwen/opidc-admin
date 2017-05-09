@@ -19,8 +19,8 @@ export class TokenService {
       .map((res) => res.json());
   }
 
-  public delete(id: number) {
+  public delete(type: string, id: number) {
     return this.http
-      .get(URL, [id]);
+      .get(URL, [type, id]);
   }
 }
