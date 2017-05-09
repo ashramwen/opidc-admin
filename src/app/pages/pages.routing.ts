@@ -1,9 +1,9 @@
 import { RouterModule, Routes } from '@angular/router';
 
+import { AdminGuard } from '../theme/provider/role.guard';
 import { LoginGuard } from './../theme/provider/login.guard';
 import { ModuleWithProviders } from '@angular/core';
 import { Pages } from './pages.component';
-import { RoleGuard } from '../theme/provider/role.guard';
 
 // noinspection TypeScriptValidateTypes
 
@@ -24,12 +24,12 @@ export const routes: Routes = [{
     {
       path: 'client',
       loadChildren: 'app/pages/client/client.module#ClientModule',
-      canActivate: [LoginGuard, RoleGuard]
+      canActivate: [LoginGuard, AdminGuard]
     },
     {
       path: 'scope',
       loadChildren: 'app/pages/scope/scope.module#ScopeModule',
-      canActivate: [LoginGuard, RoleGuard]
+      canActivate: [LoginGuard, AdminGuard]
     },
     {
       path: 'site',

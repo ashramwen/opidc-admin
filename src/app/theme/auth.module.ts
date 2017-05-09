@@ -1,12 +1,12 @@
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RequestOptions, XHRBackend } from '@angular/http';
 
+import { AdminGuard } from './provider/role.guard';
 import { AuthService } from './provider/auth.service';
 import { HttpService } from './provider/http.service';
 import { LoginGuard } from './provider/login.guard';
 import { MetaService } from './provider/meta.service';
 import { NgModule } from '@angular/core';
-import { RoleGuard } from './provider/role.guard';
 import { Router } from '@angular/router';
 
 export function httpClientFactory(
@@ -27,7 +27,7 @@ export function httpClientFactory(
     MetaService,
     AuthService,
     LoginGuard,
-    RoleGuard,
+    AdminGuard,
     {
       provide: HttpService,
       deps: [XHRBackend, RequestOptions, Router, MetaService, NgbModal],

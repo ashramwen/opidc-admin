@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   public isLoggedIn(): boolean {
-    return !!(this.meta.getCSRF());
+    return this.getRole() !== Role.NONE;
   }
 
   public getRole(): Role {

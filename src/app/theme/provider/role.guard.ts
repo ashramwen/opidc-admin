@@ -6,11 +6,11 @@ import { Observable } from 'rxjs/Observable';
 import { Role } from '../model/role.enum';
 
 @Injectable()
-export class RoleGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
 
   constructor(
-    private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   canActivate(
