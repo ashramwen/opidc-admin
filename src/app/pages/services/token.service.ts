@@ -21,6 +21,6 @@ export class TokenService {
 
   public delete(type: string, id: number) {
     return this.http
-      .get(URL, [type, id]);
+      .delete(URL, [type, id]);
   }
 }
