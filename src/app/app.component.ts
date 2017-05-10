@@ -1,12 +1,12 @@
-import { Component, ViewContainerRef } from '@angular/core';
+// import 'style-loader!./app.scss';
+// import 'style-loader!./theme/initial.scss';
 
-import { GlobalState } from './global.state';
 import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from './theme/services';
-import { BaThemeConfig } from './theme/theme.config';
-import { layoutPaths } from './theme/theme.constants';
+import { Component, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 
-import 'style-loader!./app.scss';
-import 'style-loader!./theme/initial.scss';
+import { BaThemeConfig } from './theme/theme.config';
+import { GlobalState } from './global.state';
+import { layoutPaths } from './theme/theme.constants';
 
 /*
  * App Component
@@ -19,17 +19,19 @@ import 'style-loader!./theme/initial.scss';
       <div class="additional-bg"></div>
       <router-outlet></router-outlet>
     </main>
-  `
+  `,
+  styleUrls: ['./app.scss', './theme/initial.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class App {
 
   isMenuCollapsed: boolean = false;
 
   constructor(private _state: GlobalState,
-              private _imageLoader: BaImageLoaderService,
-              private _spinner: BaThemeSpinner,
-              private viewContainerRef: ViewContainerRef,
-              private themeConfig: BaThemeConfig) {
+    private _imageLoader: BaImageLoaderService,
+    private _spinner: BaThemeSpinner,
+    private viewContainerRef: ViewContainerRef,
+    private themeConfig: BaThemeConfig) {
 
     themeConfig.config();
 
