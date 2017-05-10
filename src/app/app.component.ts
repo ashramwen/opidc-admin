@@ -1,5 +1,5 @@
-// import 'style-loader!./app.scss';
-// import 'style-loader!./theme/initial.scss';
+import 'style-loader!./app.scss';
+import 'style-loader!./theme/initial.scss';
 
 import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from './theme/services';
 import { Component, ViewContainerRef, ViewEncapsulation } from '@angular/core';
@@ -20,8 +20,8 @@ import { layoutPaths } from './theme/theme.constants';
       <router-outlet></router-outlet>
     </main>
   `,
-  styleUrls: ['./app.scss', './theme/initial.scss'],
-  encapsulation: ViewEncapsulation.None
+  // styleUrls: ['./app.scss', './theme/initial.scss'],
+  // encapsulation: ViewEncapsulation.None
 })
 export class App {
 
