@@ -65,13 +65,19 @@ export class HttpService extends Http {
       switch (res.status) {
         case 401:
         case 403:
-          this.router.navigate(['/login']);
+          // this.router.navigate(['/login']);
+          setTimeout(() => {
+            window.location.href = `${BASE_CONFIG.siteUrl}/login`;
+          }, 0);
           break;
         case 409:
           this.alert(JSON.parse(res['_body']));
           break;
         default:
-          this.router.navigate(['/login']);
+          // this.router.navigate(['/login']);
+          setTimeout(() => {
+            window.location.href = `${BASE_CONFIG.siteUrl}/login`;
+          }, 0);
           break;
       }
       return Observable.throw(res);

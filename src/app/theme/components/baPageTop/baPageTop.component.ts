@@ -10,6 +10,7 @@ import { GlobalState } from '../../../global.state';
 })
 export class BaPageTop {
 
+  public logoutUrl: string = `${BASE_CONFIG.siteUrl}/logout`;
   public isScrolled: boolean = false;
   public isMenuCollapsed: boolean = false;
 
