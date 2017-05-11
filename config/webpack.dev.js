@@ -20,7 +20,7 @@ const PORT = Number(process.env.PORT) || 3000;
 const HMR = helpers.hasProcessFlag('hot');
 const BASE_CONFIG = process.env.BASE_CONFIG = {
   'siteUrl': 'http://localhost:9090/opidc-server',
-  // 'siteUrl': 'http://10.0.0.7:9090/opidc-server',
+  // 'siteUrl': 'http://114.215.196.178:8080/opidc-server',
   username: 'admin@kii.com',
   password: 'Kiiadmin2016',
 };

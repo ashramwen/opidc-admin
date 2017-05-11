@@ -1,6 +1,6 @@
 <div class="page-top clearfix" baScrollPosition maxHeight="50" (scrollChange)="scrolledChanged($event)" [ngClass]="{scrolled: isScrolled}">
-  <a routerLink="/" class="al-logo clearfix"><span>Open</span>IDC</a>
-  <a href (click)="toggleMenu()" class="collapse-menu-link ion-navicon"></a>
+  <a routerLink="/" class="al-logo clearfix" translate><span translate>{{'general.logo'}}</span> {{'general.sublogo'}}</a>
+  <!--<a href (click)="toggleMenu()" class="collapse-menu-link fa fa-bars" aria-hidden="true"></a>-->
 
   <div class="user-profile clearfix">
     <div class="dropdown al-user-profile">

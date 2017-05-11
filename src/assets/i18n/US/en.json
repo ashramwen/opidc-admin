@@ -3,7 +3,8 @@
     "confirmDelete": "Are you sure you would like to delete this client?"
   },
   "general": {
-    "akveo": "Akveo",
+    "logo": "Open",
+    "sublogo": "ID",
     "home": "Home",
     "menu": {
       "client": "Manage Clients",
