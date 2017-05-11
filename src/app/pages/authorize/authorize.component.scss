@@ -1,0 +1,55 @@
+.row {
+  margin-bottom: 20px;
+}
+
+.mt80 {
+  margin-top: 80px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.content {
+  margin-bottom: 20px;
+}
+
+.banner {
+  padding: 10px;
+  width: 100%;
+  // height: 100px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+  h1 {
+    font-weight: 700;
+    width: 100%;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 300;
+    color: #00abff;
+    margin-bottom: 0px;
+  }
+}
+
+.info {
+  ul {
+    padding-left: 22px;
+    margin-bottom: 40px;
+  }
+}
+
+.right {
+  li {
+    margin: 10px 0;
+    div {
+      padding: 5px 22px;
+    }
+  }
+  .subject {
+    margin-bottom: 40px;
+  }
+}
