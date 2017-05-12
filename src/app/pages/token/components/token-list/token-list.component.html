@@ -17,7 +17,7 @@
         <app-tag [tags]="token.scopes"></app-tag>
       </td>
       <td class="nowrap">
-        <div>{{token.expiration | date | expires}}</div>
+        <div>{{token.expiration | date:'medium' | expires}}</div>
       </td>
       <td>
         <button type="button" class="btn btn-danger" (click)="revoke(token.id)"><i class="fa fa-trash-o" aria-hidden="true"></i> Revoke</button>

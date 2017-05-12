@@ -27,9 +27,9 @@
               <app-tag [tags]="site.allowedScopes"></app-tag>
             </td>
             <td>
-              <div>Authorized: {{site.creationDate | date}}</div>
-              <div>Last accessed: {{site.accessDate | date}}</div>
-              <div>Expires: {{site.timeoutDate | date | expires}}</div>
+              <div>Authorized: {{site.creationDate | date:'medium'}}</div>
+              <div>Last accessed: {{site.accessDate | date:'medium'}}</div>
+              <div>Expires: {{site.timeoutDate | date:'medium' | expires}}</div>
             </td>
             <td>
               <button type="button" class="btn btn-danger" (click)="revoke(site.id)"><i class="fa fa-trash-o" aria-hidden="true"></i> Revoke</button>
