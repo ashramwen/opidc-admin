@@ -88,6 +88,7 @@ export class HttpService extends Http {
     let headers = new Headers();
 
     headers.set('Content-Type', 'application/json');
+    headers.set('Accept', 'application/json');
 
     let xsrf = this.meta.getCSRF();
     if (xsrf)
