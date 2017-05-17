@@ -1,0 +1,8 @@
+@import 'conf/conf';
+.ng-invalid {
+  border: 1px solid #fa758e;
+  &:focus {
+    box-shadow: none;
+    border-color: #f95372;
+  }
+}

@@ -9,6 +9,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AlertModalComponent implements OnInit {
 
+  public errorCode: number | string;
   public modalHeader: string;
   public modalContent: string;
 

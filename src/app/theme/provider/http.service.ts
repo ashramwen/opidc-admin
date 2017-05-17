@@ -65,19 +65,23 @@ export class HttpService extends Http {
       switch (res.status) {
         case 401:
         case 403:
-          // this.router.navigate(['/login']);
-          setTimeout(() => {
-            window.location.href = `${BASE_CONFIG.siteUrl}/login`;
-          }, 0);
+          this.redirectToLogin();
           break;
-        case 409:
-          this.alert(JSON.parse(res['_body']));
-          break;
+        // case 409:
+        //   this.alert(JSON.parse(res['_body']));
+        //   break;
         default:
-          // this.router.navigate(['/login']);
-          setTimeout(() => {
-            window.location.href = `${BASE_CONFIG.siteUrl}/login`;
-          }, 0);
+          let error: OpidcError;
+          if (res['_body']) {
+            error = JSON.parse(res['_body']);
+          }
+          else {
+            error = {
+              error: 'Error',
+              error_description: res.status.toString()
+            };
+          }
+          this.alert(error, res.status);
           break;
       }
       return Observable.throw(res);
@@ -100,9 +104,16 @@ export class HttpService extends Http {
     return headers;
   }
 
-  private alert(error: OpidcError) {
+  private alert(error: OpidcError, errorCode?: number | string) {
     let activeModal = this.modal.open(AlertModalComponent);
     activeModal.componentInstance.modalHeader = error.error;
     activeModal.componentInstance.modalContent = error.error_description;
+    activeModal.componentInstance.errorCode = errorCode;
+  }
+
+  private redirectToLogin() {
+    setTimeout(() => {
+      window.location.href = `${BASE_CONFIG.siteUrl}/login`;
+    }, 0);
   }
 }

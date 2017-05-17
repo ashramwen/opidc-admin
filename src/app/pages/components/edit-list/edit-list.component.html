@@ -1,5 +1,5 @@
 <div fxLayout="row">
-  <input fxFlex type="text" class="form-control" [id]="id" [placeholder]="placeholder" [(ngModel)]="text">
+  <input fxFlex type="text" class="form-control" [id]="id" [placeholder]="placeholder" [(ngModel)]="text" [pattern]="pattern" #input>
   <div fxFlex="40px" class="text-right">
     <button class="btn btn-info btn-icon" type="button" (click)="add()"><i class="fa fa-plus"></i></button>
   </div>

@@ -19,7 +19,7 @@
           <ng-template ngbTabContent>
             <div class="form-horizontal">
               <!--<div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label">Registered at</label>
                 </div>
                 <div fxFlex="30%">
@@ -28,7 +28,7 @@
               </div>-->
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label" for="inputClientName">Client Name</label>
                 </div>
                 <div fxFlex="30%">
@@ -38,17 +38,17 @@
               </div>
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label" for="inputURI">Redirect URI(s)</label>
                 </div>
                 <div fxFlex="30%">
-                  <edit-list id="inputURI" [(items)]="client.redirectUris"></edit-list>
+                  <edit-list id="inputURI" [(items)]="client.redirectUris" pattern="https?://.+"></edit-list>
                   <label>URIs that the client can be redirected to after the authorization page</label>
                 </div>
               </div>
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label" for="inputDesc">Description</label>
                 </div>
                 <div fxFlex="30%">
@@ -58,51 +58,51 @@
               </div>
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label" for="inputLogo">Logo</label>
                 </div>
                 <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputLogo" placeholder="https://" [(ngModel)]="client.logoUri">
+                  <input type="text" class="form-control" id="inputLogo" placeholder="https://" [(ngModel)]="client.logoUri" pattern="https?://.+">
                   <label>URL that points to a logo image, will be displayed on approval page</label>
                 </div>
               </div>
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label" for="inputTerm">Terms of Service</label>
                 </div>
                 <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputTerm" placeholder="https://" [(ngModel)]="client.tosUri">
+                  <input type="text" class="form-control" id="inputTerm" placeholder="https://" [(ngModel)]="client.tosUri" pattern="https?://.+">
                   <label>URL for the Terms of Service of this client, will be displayed to the user</label>
                 </div>
               </div>
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label" for="inputPolicy">Policy Statement</label>
                 </div>
                 <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputPolicy" placeholder="https://" [(ngModel)]="client.policyUri">
+                  <input type="text" class="form-control" id="inputPolicy" placeholder="https://" [(ngModel)]="client.policyUri" pattern="https?://.+">
                   <label>URL for the Policy Statement of this client, will be displayed to the user</label>
                 </div>
               </div>
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label" for="inputHomePage">Home Page</label>
                 </div>
                 <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputHomePage" placeholder="https://" [(ngModel)]="client.clientUri">
+                  <input type="text" class="form-control" id="inputHomePage" placeholder="https://" [(ngModel)]="client.clientUri" pattern="https?://.+">
                   <label>URL for the client's home page, will be displayed to the user</label>
                 </div>
               </div>
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label" for="inputContacts">Contacts</label>
                 </div>
                 <div fxFlex="30%">
-                  <edit-list id="inputContacts" [(items)]="client.contacts"></edit-list>
+                  <edit-list id="inputContacts" [(items)]="client.contacts" pattern="https?://.+"></edit-list>
                   <label>List of contacts for administrators of this client.</label>
                 </div>
               </div>
@@ -117,7 +117,7 @@
             <div class="form-horizontal">
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label" for="inputScope">Scope</label>
                 </div>
                 <div fxFlex="30%">
@@ -127,7 +127,7 @@
               </div>
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label">Grant Types</label>
                 </div>
                 <div fxFlex="30%">
@@ -136,7 +136,7 @@
               </div>
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label">Response Types</label>
                 </div>
                 <div fxFlex="30%">
@@ -145,7 +145,7 @@
               </div>
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label">Subject Type</label>
                 </div>
                 <div fxFlex="30%">
@@ -154,11 +154,11 @@
               </div>
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label" for="inputIdentifierURI">Sector Identifier URI</label>
                 </div>
                 <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputIdentifierURI" placeholder="https://" [(ngModel)]="client.sectorIdentifierUri">
+                  <input type="text" class="form-control" id="inputIdentifierURI" placeholder="https://" [(ngModel)]="client.sectorIdentifierUri" pattern="https?://.+">
                   <label>Sector Identifier for JavaScript</label>
                 </div>
               </div>
@@ -172,7 +172,7 @@
             <div class="form-horizontal">
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label">Client Secret</label>
                 </div>
                 <div fxFlex="30%">
@@ -189,11 +189,11 @@
               </div>
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label" for="inputJwksUri">Public Key Set</label>
                 </div>
                 <div fxFlex="30%">
-                  <input type="text" class="form-control" id="inputJwksUri" placeholder="https://" [(ngModel)]="client.jwksUri">
+                  <input type="text" class="form-control" id="inputJwksUri" placeholder="https://" [(ngModel)]="client.jwksUri" pattern="https?://.+">
                   <label>URL for the client's JSON Web Key set (must be reachable by the server)</label>
                 </div>
               </div>
@@ -207,13 +207,13 @@
           <ng-template ngbTabContent>
             <div class="form-horizontal">
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label">Access Token Timeout</label>
                 </div>
                 <div fxFlex="30%">
                   <app-checkbox [(checked)]="cbAccessTokenValiditySeconds" text="Access tokens do not time out" (onChange)="accessTokenValiditySecondsChange($event)"></app-checkbox>
                   <div class="input-group">
-                    <input type="text" class="form-control with-info-addon" placeholder="Access Token Timeout" aria-describedby="accessTokenValiditySeconds"
+                    <input type="number" class="form-control with-info-addon" placeholder="Access Token Timeout" aria-describedby="accessTokenValiditySeconds"
                       [(ngModel)]="client.accessTokenValiditySeconds" [disabled]="cbAccessTokenValiditySeconds">
                     <span class="input-group-addon input-group-addon-info addon-right" id="accessTokenValiditySeconds">seconds</span>
                   </div>
@@ -222,12 +222,12 @@
               </div>
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label">ID Token Timeout</label>
                 </div>
                 <div fxFlex="30%">
                   <div class="input-group">
-                    <input type="text" class="form-control with-info-addon" placeholder="ID Token Timeout" aria-describedby="idTokenValiditySeconds"
+                    <input type="number" class="form-control with-info-addon" placeholder="ID Token Timeout" aria-describedby="idTokenValiditySeconds"
                       [(ngModel)]="client.idTokenValiditySeconds">
                     <span class="input-group-addon input-group-addon-info addon-right" id="idTokenValiditySeconds">seconds</span>
                   </div>
@@ -236,7 +236,7 @@
               </div>
 
               <div fxLayout="row" class="form-group">
-                <div fxFlex="10%" class="text-right">
+                <div fxFlex="10%" class="text-right subject">
                   <label class="form-control-label">Refresh Tokens</label>
                 </div>
                 <div fxFlex="30%">
