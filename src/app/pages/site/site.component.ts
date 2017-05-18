@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 import { ConfirmModalComponent } from './../components/confirm-modal/confirm-modal.component';
-import { DatePipe } from '@angular/common';
 import { PagerService } from './../services/pager.service';
 import { Response } from '@angular/http';
 import { SiteService } from '../services/site.service';
@@ -15,13 +14,14 @@ import { SiteService } from '../services/site.service';
 })
 export class SiteComponent implements OnInit {
 
-  public sites: ApprovedSites;
   public pagedSites: ApprovedSites;
   public totalSize = 0;
   public page: number = 1;
 
+  private sites: ApprovedSites;
+  private filtered: ApprovedSites;
+
   constructor(
-    private datePipe: DatePipe,
     private modal: NgbModal,
     private siteService: SiteService,
     private pagerService: PagerService
@@ -33,6 +33,7 @@ export class SiteComponent implements OnInit {
 
   public refresh() {
     this.sites = undefined;
+    this.filtered = undefined;
     this.pagedSites = undefined;
     this.page = 1;
     this.totalSize = 0;
@@ -40,12 +41,27 @@ export class SiteComponent implements OnInit {
   }
 
   public pageChange() {
-    let pager = this.pagerService.getPager(this.sites.length, this.page);
-    this.pagedSites = this.sites.slice(pager.startIndex, pager.endIndex + 1);
+    let pager = this.pagerService.getPager(this.filtered.length, this.page);
+    this.pagedSites = this.filtered.slice(pager.startIndex, pager.endIndex + 1);
   }
 
   public trackById(index: number, site: ApprovedSite): number {
     return site.id;
+  }
+
+  public filtering(text: string) {
+    text = text.toLocaleLowerCase();
+    if (text) {
+      this.filtered = this.sites.filter(o => {
+        if (o.clientId.toLocaleLowerCase().indexOf(text) > -1) return true;
+        if (o.allowedScopes.find(s => { return s.toLocaleLowerCase().indexOf(text) > -1; })) return true;
+        return false;
+      });
+    } else {
+      this.filtered = this.sites;
+    }
+    this.totalSize = this.filtered.length;
+    this.pageChange();
   }
 
   public revoke(id: number) {
@@ -67,7 +83,8 @@ export class SiteComponent implements OnInit {
   private getSite() {
     this.siteService.get().subscribe((res: ApprovedSites) => {
       this.sites = res;
-      this.totalSize = this.sites.length;
+      this.filtered = this.sites;
+      this.totalSize = this.filtered.length;
       this.pageChange();
     });
   }

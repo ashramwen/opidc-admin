@@ -8,19 +8,22 @@
         <li>
           <button type="button" class="btn btn-primary" routerLink="./new"><i class="fa fa-plus" aria-hidden="true"></i> New Scope</button>
         </li>
+        <li>
+          <search-panel (filterChange)="filtering($event)"></search-panel>
+        </li>
       </ul>
     </ba-card>
     <ba-card title="Clients" baCardClass="with-scroll">
       <table class="table table-hover">
         <thead>
           <tr class="black-muted-bg">
-            <th>ID</th>
+            <th class="w125">ID</th>
             <th>Scope</th>
             <th class="w212"></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let scope of scopes; trackBy: trackById">
+          <tr *ngFor="let scope of pagedScopes; trackBy: trackById">
             <td>
               <span class="label label-primary">{{scope.id}}</span>
             </td>
@@ -41,6 +44,11 @@
           </tr>
         </tbody>
       </table>
+      <div class="row" *ngIf="totalSize > 10">
+        <div class="col-md-12">
+          <ngb-pagination [collectionSize]="totalSize" [(page)]="page" [boundaryLinks]="true" (pageChange)="pageChange()"></ngb-pagination>
+        </div>
+      </div>
     </ba-card>
   </div>
 </div>

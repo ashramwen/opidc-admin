@@ -58,6 +58,7 @@ $card-header-font-size: 16px;
     height: 100%;
   }
   > .card-header {
+    position: relative;
     color: $default-text;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;

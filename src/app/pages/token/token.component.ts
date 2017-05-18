@@ -17,4 +17,9 @@ export class TokenComponent {
   public refresh() {
     this.tokenLists.forEach(o => o.refresh());
   }
+
+  public filtering(text: string) {
+    this.tokenLists.forEach(o => o.search = text);
+  }
+
 }

@@ -6,6 +6,7 @@ import {
   EditListComponent,
   RadioListComponent,
   ScopeListComponent,
+  SearchPanelComponent,
   TagComponent,
 } from '../pages/components';
 import {
@@ -72,6 +73,7 @@ const NGA_COMPONENTS = [
   EditListComponent,
   RadioListComponent,
   ScopeListComponent,
+  SearchPanelComponent,
   TagComponent,
 ];
 

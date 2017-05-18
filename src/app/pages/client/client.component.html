@@ -8,13 +8,16 @@
         <li>
           <button type="button" class="btn btn-primary" routerLink="./new"><i class="fa fa-plus-square-o" aria-hidden="true"></i> New Client</button>
         </li>
+        <li>
+          <search-panel (filterChange)="filtering($event)"></search-panel>
+        </li>
       </ul>
     </ba-card>
     <ba-card title="Clients" baCardClass="with-scroll">
       <table class="table table-hover">
         <thead>
           <tr class="black-muted-bg">
-            <th>ID</th>
+            <th class="w125">ID</th>
             <th>Client</th>
             <th>Information</th>
             <th class="w212"></th>
@@ -46,7 +49,7 @@
         </tbody>
       </table>
       <div class="row" *ngIf="totalSize > 10">
-        <div class="col-md-12 col-centered">
+        <div class="col-md-12">
           <ngb-pagination [collectionSize]="totalSize" [(page)]="page" [boundaryLinks]="true" (pageChange)="pageChange()"></ngb-pagination>
         </div>
       </div>

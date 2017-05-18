@@ -1,8 +1,8 @@
 @import 'conf/conf';
-.ng-invalid {
-  border: 1px solid #fa758e;
+.ng-invalid.ng-touched, .ng-invalid.ng-dirty {
+  border: 1px solid $danger-bg;
   &:focus {
     box-shadow: none;
-    border-color: #f95372;
+    border-color: $danger;
   }
 }

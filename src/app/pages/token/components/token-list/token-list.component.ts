@@ -22,6 +22,7 @@ export class TokenListComponent implements OnInit {
   public page: number = 1;
 
   private tokens: OpidcTokens;
+  private filtered: OpidcTokens;
 
   constructor(
     private modal: NgbModal,
@@ -35,6 +36,7 @@ export class TokenListComponent implements OnInit {
 
   public refresh() {
     this.tokens = undefined;
+    this.filtered = undefined;
     this.pagedTokens = undefined;
     this.page = 1;
     this.totalSize = 0;
@@ -47,8 +49,22 @@ export class TokenListComponent implements OnInit {
 
   public pageChange() {
     if (!this.tokens) return;
-    let pager = this.pagerService.getPager(this.tokens.length, this.page);
-    this.pagedTokens = this.tokens.slice(pager.startIndex, pager.endIndex + 1);
+    let pager = this.pagerService.getPager(this.filtered.length, this.page);
+    this.pagedTokens = this.filtered.slice(pager.startIndex, pager.endIndex + 1);
+  }
+
+  public filtering(text: string) {
+    text = text.toLocaleLowerCase();
+    if (text) {
+      this.filtered = this.tokens.filter(o => {
+        if (o.scopes.find(s => { return s.toLocaleLowerCase().indexOf(text) > -1; })) return true;
+        return false;
+      });
+    } else {
+      this.filtered = this.tokens;
+    }
+    this.totalSize = this.filtered.length;
+    this.pageChange();
   }
 
   public revoke(id: number) {
@@ -71,7 +87,8 @@ export class TokenListComponent implements OnInit {
     this.tokenService.getToken(this.type)
       .subscribe((res: OpidcTokens) => {
         this.tokens = res;
-        this.totalSize = this.tokens.length;
+        this.filtered = this.tokens;
+        this.totalSize = this.filtered.length;
         this.pageChange();
       });
   }

@@ -1,0 +1,26 @@
+@import '../../../theme/sass/conf/conf';
+
+input {
+  color: #fff;
+  text-shadow: none;
+  font-size: 13px;
+  line-height: 25px;
+  transition: all 0.5s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  width: 140px;
+  padding-right: 20px;
+  @include placeholderStyle($default-text, 0.8);
+}
+
+.fa-times-circle {
+  position: absolute;
+  cursor: pointer;
+  top: 5px;
+  right: 0;
+  color: $danger-bg;
+}

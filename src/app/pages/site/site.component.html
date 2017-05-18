@@ -5,13 +5,16 @@
         <li>
           <button type="button" class="btn btn-default" (click)="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button>
         </li>
+        <li>
+          <search-panel (filterChange)="filtering($event)"></search-panel>
+        </li>
       </ul>
     </ba-card>
     <ba-card title="Clients" baCardClass="with-scroll">
       <table class="table table-hover">
         <thead>
           <tr class="black-muted-bg">
-            <th>ID</th>
+            <th class="w125">ID</th>
             <th>Application</th>
             <th>Expires</th>
             <th class="w124"></th>
@@ -38,7 +41,7 @@
         </tbody>
       </table>
       <div class="row" *ngIf="totalSize > 10">
-        <div class="col-md-12 col-centered">
+        <div class="col-md-12">
           <ngb-pagination [collectionSize]="totalSize" [(page)]="page" [boundaryLinks]="true" (pageChange)="pageChange()"></ngb-pagination>
         </div>
       </div>

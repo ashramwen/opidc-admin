@@ -5,6 +5,9 @@
         <li>
           <button type="button" class="btn btn-default" (click)="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> Refresh</button>
         </li>
+        <li>
+          <search-panel (filterChange)="filtering($event)"></search-panel>
+        </li>
       </ul>
     </ba-card>
     <ba-card title="Tokens" baCardClass="with-scroll">
