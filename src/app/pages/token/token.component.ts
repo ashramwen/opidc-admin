@@ -19,7 +19,7 @@ export class TokenComponent {
   }
 
   public filtering(text: string) {
-    this.tokenLists.forEach(o => o.search = text);
+    this.tokenLists.forEach(o => o.filtering(text));
   }
 
 }
