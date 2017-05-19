@@ -44,6 +44,7 @@ export class ClientComponent implements OnInit {
     text = text.toLocaleLowerCase();
     if (text) {
       this.filteredClient = this.clients.filter(c => {
+        if (c.clientId && c.clientId.toLocaleLowerCase().indexOf(text) > -1) return true;
         if (c.clientName && c.clientName.toLocaleLowerCase().indexOf(text) > -1) return true;
         if (c.clientUri && c.clientUri.toLocaleLowerCase().indexOf(text) > -1) return true;
         if (c.scope && c.scope.find(s => { return s.toLocaleLowerCase().indexOf(text) > -1; })) return true;

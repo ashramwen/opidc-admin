@@ -32,6 +32,7 @@
               <div>{{client.clientName}}</div>
             </td>
             <td class="nowrap">
+              <input type="text" class="form-control" value="{{client.clientId}}" readonly>
               <div>{{client.clientUri}}</div>
               <app-tag [tags]="client.scope"></app-tag>
             </td>
