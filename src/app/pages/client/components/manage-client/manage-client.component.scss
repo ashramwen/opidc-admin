@@ -5,3 +5,7 @@
 .subject {
   min-width: 132px;
 }
+
+input[readonly] {
+  color: rgba(255, 255, 255, 0.7);
+}

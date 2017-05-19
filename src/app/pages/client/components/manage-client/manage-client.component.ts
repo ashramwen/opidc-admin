@@ -30,7 +30,7 @@ export class ManageClientComponent implements OnInit {
   public cbRefreshToken: boolean = false;
   public cbRefreshTokenTimeout: boolean = true;
 
-  private id?: number;
+  public id?: number;
 
   constructor(
     private router: Router,

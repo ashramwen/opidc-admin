@@ -18,14 +18,16 @@
         <ngb-tab title="Main">
           <ng-template ngbTabContent>
             <div class="form-horizontal">
-              <!--<div fxLayout="row" class="form-group">
+
+              <div fxLayout="row" class="form-group" *ngIf="id">
                 <div fxFlex="10%" class="text-right subject">
-                  <label class="form-control-label">Registered at</label>
+                  <label class="form-control-label" for="inputClientId">Client ID</label>
                 </div>
                 <div fxFlex="30%">
-                  <label class="form-control-label">(Unknown)</label>
+                  <input type="text" class="form-control" id="inputClientId" placeholder="Client ID" [ngModel]="client.clientId" readonly>
+                  <label>Read-only</label>
                 </div>
-              </div>-->
+              </div>
 
               <div fxLayout="row" class="form-group">
                 <div fxFlex="10%" class="text-right subject">
